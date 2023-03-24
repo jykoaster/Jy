@@ -6,13 +6,16 @@ const portfolios = ref([
   {
     src: '/1.png',
     name: 'NAME',
+    id:'1'
   },
   {
     src: '/2.png',
     name: 'NAME',
+    id:'2'
   },
 ])
 const generate = ref('THE GENERATE')
+
 </script>
 <template>
   <div class="flex flex-col justify-center text-secondary my-20">
@@ -31,7 +34,7 @@ const generate = ref('THE GENERATE')
           <div class="flex justify-between items-end">
             <p class="text-base">{{ generate }}</p>
             <div
-              class="-mb-7 rounded-full w-20 h-20 flex justify-center items-center cursor-pointer duration-1000 hover:bg-slate-400 active:animate-ping"
+              class="-mb-7 rounded-full w-20 h-20 flex justify-center items-center cursor-pointer duration-1000 hover:bg-slate-400 active:animate-ping" @click="$emit('toDetail',v.id)"
             >
               <Chevron width="47" height="8" />
             </div>

@@ -1,48 +1,53 @@
 <script setup lang="ts">
-import Header from './components/Header.vue'
-import Menu from './components/Menu.vue'
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-const router = useRouter()
-const menu = ref(false)
+import Header from "./components/Header.vue";
+import Menu from "./components/Menu.vue";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+const menu = ref(false);
 
 const openMenu = () => {
-  inserted()
-  menu.value = true
-}
+  inserted();
+  menu.value = true;
+};
 
 const closeMenu = () => {
-  unbind()
-  menu.value = false
-}
+  unbind();
+  menu.value = false;
+};
 
 const scrollTo = (block: string) => {
-  router.push('/').then(() => {
-    unbind()
-    menu.value = false
-    const el = document.getElementById(block)
+  router.push("/").then(() => {
+    unbind();
+    menu.value = false;
+    const el = document.getElementById(block);
     if (el) {
       window.scrollTo({
-        behavior: 'smooth',
-        top: el.getBoundingClientRect().top - document.body.getBoundingClientRect().top - 96,
-      })
+        behavior: "smooth",
+        top:
+          el.getBoundingClientRect().top -
+          document.body.getBoundingClientRect().top -
+          96,
+      });
       // el.scrollIntoView({ behavior: 'smooth', top:'96px' })
     }
-  })
-}
+  });
+};
 
 const inserted = () => {
-  const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
-  document.body.style.cssText += 'position:fixed;width:100%;top:-' + scrollTop + 'px;'
-}
+  const scrollTop =
+    document.body.scrollTop || document.documentElement.scrollTop;
+  document.body.style.cssText +=
+    "position:fixed;width:100%;top:-" + scrollTop + "px;";
+};
 
 const unbind = () => {
-  const body = document.body
-  body.style.position = ''
-  const top = body.style.top
-  document.body.scrollTop = document.documentElement.scrollTop = -parseInt(top)
-  body.style.top = ''
-}
+  const body = document.body;
+  body.style.position = "";
+  const top = body.style.top;
+  document.body.scrollTop = document.documentElement.scrollTop = -parseInt(top);
+  body.style.top = "";
+};
 </script>
 
 <template>
@@ -59,10 +64,11 @@ const unbind = () => {
 .v-enter-active,
 .v-leave-active {
   transition: all 0.5s ease;
+  transform-origin: top right;
 }
 
 .v-enter-from,
 .v-leave-to {
-  transform: translateX(100%);
+  transform: scale(0);
 }
 </style>
