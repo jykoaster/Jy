@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 defineProps({
   images: Array,
   description: String,
 })
+const router = useRouter()
 const heading = ref('PORTFOLIO')
 const images = ref(['/1.png', '/1.png', '/1.png', '/1.png', '/1.png'])
 const description = ref('This is a description')
@@ -33,7 +35,7 @@ const hover = ref(null) as unknown
     </div>
     <p class="text-center mt-24 text-xl">{{ description }}</p>
     <div class="flex justify-between items-center mx-40 mt-20">
-      <button class="bg-third text-secondary hover:text-third">
+      <button class="bg-third text-secondary hover:text-third" @click="$emit('goto', 'portfolio')">
         {{ goBack }}
       </button>
       <button class="bg-secondary text-third hover:text-secondary">
