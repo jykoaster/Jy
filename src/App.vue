@@ -46,16 +46,18 @@ const unbind = () => {
 </script>
 
 <template>
-  <Header :isMenuOpen="menu" @openMenu="openMenu" @close="closeMenu" />
-  <Transition name="scale">
-    <Menu v-if="menu" @goto="scrollTo" />
-  </Transition>
-  <div class="max-w-7xl mx-auto">
-    <router-view v-slot="{ Component }">
-      <transition name="fade">
-        <component :is="Component" @goto="scrollTo" />
-      </transition>
-    </router-view>
+  <div class="overflow-hidden">
+    <Header :isMenuOpen="menu" @openMenu="openMenu" @close="closeMenu" />
+    <Transition name="scale">
+      <Menu v-if="menu" @goto="scrollTo" />
+    </Transition>
+    <div class="max-w-7xl mx-auto">
+      <router-view v-slot="{ Component }">
+        <transition name="fade">
+          <component :is="Component" @goto="scrollTo" />
+        </transition>
+      </router-view>
+    </div>
   </div>
 </template>
 

@@ -1,15 +1,20 @@
 <script setup lang="ts">
-import Logo from './images/Logo.vue'
 import Collapse from './images/CollapseIcon.vue'
-defineProps({
-  isMenuOpen: Boolean,
-})
+defineProps<{
+  isMenuOpen: Boolean
+}>()
+defineEmits<{
+  (e: 'openMenu'): void
+  (e: 'close'): void
+}>()
 </script>
 <template>
   <div class="h-24">
-    <div class="fixed top-0 flex justify-between items-center w-full h-24 py-2 px-24 z-20 bg-primary">
-      <Logo height="100%" />
-      <div class="relative">
+    <div
+      class="fixed flex justify-between items-center w-full h-24 py-2 z-20 bg-primary cursor-pointer px-5 top-0 lg:px-24"
+    >
+      <img src="/logo.png" class="h-20 lg:h-24" alt="" @click="$router.push('/')" />
+      <div class="h-24 flex items-center justify-end w-full">
         <Transition name="collapse">
           <Collapse
             v-show="!isMenuOpen"

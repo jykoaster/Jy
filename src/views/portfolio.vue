@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-defineProps({
-  images: Array,
-  description: String,
-})
-const router = useRouter()
+
+defineProps<{
+  images: Array<any>
+  description: String
+}>()
+defineEmits<{
+  (e: 'goto', block: string): void
+}>()
 const heading = ref('PORTFOLIO')
 const images = ref(['/1.png', '/1.png', '/1.png', '/1.png', '/1.png'])
 const description = ref('This is a description')
@@ -14,9 +16,9 @@ const goExplore = ref('GO EXPLORE')
 const hover = ref(null) as unknown
 </script>
 <template>
-  <div class="flex flex-col justify-center text-secondary my-20">
+  <div class="flex flex-col justify-center text-secondary my-20 mx-5 lg:mx-0">
     <p class="text-3xl pb-2 border-b-2 border-secondary">{{ heading }}</p>
-    <div class="grid grid-cols-4 gap-4 mt-20">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-20">
       <div
         v-for="(v, i) in images"
         class="relative rounded-xl w-full h-0 p-0 bg-no-repeat bg-cover bg-center bg-opacity-50"
@@ -34,11 +36,11 @@ const hover = ref(null) as unknown
       </div>
     </div>
     <p class="text-center mt-24 text-xl">{{ description }}</p>
-    <div class="flex justify-between items-center mx-40 mt-20">
-      <button class="bg-third text-secondary hover:text-third" @click="$emit('goto', 'portfolio')">
+    <div class="flex justify-between items-center mt-20 lg:mx-40">
+      <button class="mx-2 bg-third text-secondary hover:text-third" @click="$emit('goto', 'portfolio')">
         {{ goBack }}
       </button>
-      <button class="bg-secondary text-third hover:text-secondary">
+      <button class="mx-2 bg-secondary text-third hover:text-secondary">
         {{ goExplore }}
       </button>
     </div>
