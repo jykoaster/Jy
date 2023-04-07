@@ -10,11 +10,11 @@ defineEmits<{
 }>();
 const heading = ref("PORTFOLIO");
 const images = ref([
-  "/port1.png",
-  "/port1.png",
-  "/port1.png",
-  "/port1.png",
-  "/port1.png",
+  "port1.png",
+  "port1.png",
+  "port1.png",
+  "port1.png",
+  "port1.png",
 ]);
 const description = ref("This is a description");
 const goBack = ref("GO BACK");
