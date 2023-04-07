@@ -14,10 +14,13 @@
     "@fortawesome/free-regular-svg-icons": "^6.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
     "@fortawesome/vue-fontawesome": "^3.0.3",
+    "@tweenjs/tween.js": "^19.0.0",
+    "three": "^0.151.3",
     "vue": "^3.2.47",
     "vue-router": "4"
   },
   "devDependencies": {
+    "@types/three": "^0.150.1",
     "@vitejs/plugin-vue": "^4.1.0",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",

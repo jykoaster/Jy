@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import Header from './components/Header.vue'
 import Menu from './components/Menu.vue'
-import { ref } from 'vue'
+import Notebook from './components/Notebook.vue'
+import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const menu = ref(false)
+const isInit = ref(false)
+onMounted(() => {
+  setTimeout(() => {
+    isInit.value = true
+  }, 1000)
+})
 
 const openMenu = () => {
   inserted()
@@ -52,9 +59,12 @@ const unbind = () => {
       <Menu v-if="menu" @goto="scrollTo" />
     </Transition>
     <div class="max-w-7xl mx-auto">
+      <transition name="fade">
+        <Notebook v-if="!isInit" />
+      </transition>
       <router-view v-slot="{ Component }">
         <transition name="fade">
-          <component :is="Component" @goto="scrollTo" />
+          <component v-if="isInit" :is="Component" @goto="scrollTo" />
         </transition>
       </router-view>
     </div>
