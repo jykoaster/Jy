@@ -7,12 +7,12 @@ const emit = defineEmits<{
 const heading = ref("PORTFOLIO");
 const portfolios = ref([
   {
-    src: "/port1.png",
+    src: "port1.png",
     name: "NAME",
     id: "1",
   },
   {
-    src: "/port2.png",
+    src: "port2.png",
     name: "NAME",
     id: "2",
   },
