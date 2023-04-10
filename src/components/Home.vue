@@ -1,30 +1,34 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-const name = ref('JEREMY XIAO')
-const job = ref('FRONT-END ENGINEER')
-const Email = ref('ym31215@gmail.com')
+import { ref } from "vue";
+const name = ref("JEREMY XIAO");
+const job = ref("FRONT-END ENGINEER");
+const Email = ref("YM31215@GMAIL.COM");
 const icons = ref([
   {
-    icon: 'fa-brands fa-npm',
-    name: 'npm',
+    icon: "fa-brands fa-npm",
+    name: "npm",
   },
   {
-    icon: 'fa-brands fa-github',
-    name: 'github',
+    icon: "fa-brands fa-github",
+    name: "github",
   },
-])
+]);
 </script>
 <template>
-  <div class="px-5 lg:px-0 lg:flex lg:flex-col lg:justify-center lg:min-h-[calc(100vh-96px)]">
+  <div
+    class="px-5 lg:px-0 lg:flex lg:flex-col lg:justify-center lg:min-h-[calc(100vh-96px)]"
+  >
     <div class="flex flex-col justify-between relative lg:flex-row">
       <img src="/NB_m.png" class="lg:hidden w-full" alt="" />
       <div>
         <img src="/logo.png" class="hidden lg:block" alt="" />
-        <div class="border-2 border-white rounded-3xl text-secondary text-2xl p-10 mt-10 lg:text-4xl">
-          <p class="text-3xl lg:text-4xl mb-5 lg:text-center">{{ name }}</p>
-          <p class="mb-5">{{ job }}</p>
-          <p>EMAIL:</p>
-          <p>{{ Email }}</p>
+        <div
+          class="border-2 border-white rounded-3xl text-secondary text-center text-xl p-10 mt-10 lg:text-3xl"
+        >
+          <p class="text-3xl lg:text-4xl mb-5">{{ name }}</p>
+          <p class="mb-5 whitespace-nowrap">{{ job }}</p>
+          <p class="whitespace-nowrap">{{ Email }}</p>
+          <p></p>
         </div>
       </div>
       <div class="hidden lg:block">
