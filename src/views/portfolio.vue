@@ -14,6 +14,14 @@ const description = ref('This is a description')
 const goBack = ref('GO BACK')
 const goExplore = ref('GO EXPLORE')
 const hover = ref(null) as unknown
+const getImage = (url: string) => {
+  const baseurl = import.meta.env.BASE_URL
+  if (url.match(baseurl)) {
+    return url
+  } else {
+    return baseurl + url
+  }
+}
 </script>
 <template>
   <div class="flex flex-col justify-center text-secondary my-20 mx-5 lg:mx-0">
@@ -23,7 +31,7 @@ const hover = ref(null) as unknown
         v-for="(v, i) in images"
         class="relative rounded-xl w-full h-0 p-0 bg-no-repeat bg-cover bg-center bg-opacity-50"
         style="padding-bottom: 60%"
-        :style="{ backgroundImage: `url(${v})` }"
+        :style="{ backgroundImage: `url(${getImage(v)})` }"
         @mouseover="hover = i"
         @mouseleave="hover = null"
       >

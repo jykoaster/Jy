@@ -19,7 +19,7 @@ const routes: RouteRecordRaw[] = [
 ]
 
 const options: RouterOptions = {
-  history: createWebHistory('Jy'),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
 }
 
