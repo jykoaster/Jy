@@ -15,7 +15,7 @@ const icons = ref([
 ])
 </script>
 <template>
-  <div class="px-5 lg:px-0 lg:min-h-screen">
+  <div class="px-5 lg:px-0 lg:flex lg:flex-col lg:justify-center lg:min-h-[calc(100vh-96px)]">
     <div class="flex flex-col justify-between relative lg:flex-row">
       <img src="/NB_m.png" class="lg:hidden w-full" alt="" />
       <div>
