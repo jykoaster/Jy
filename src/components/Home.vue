@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 const name = ref('JEREMY XIAO')
 const job = ref('FRONT-END ENGINEER')
-const Email = ref('EMAIL:')
+const Email = ref('ym31215@gmail.com')
 const icons = ref([
   {
     icon: 'fa-brands fa-npm',
@@ -23,6 +23,7 @@ const icons = ref([
         <div class="border-2 border-white rounded-3xl text-secondary text-2xl p-10 mt-10 lg:text-4xl">
           <p class="text-3xl lg:text-4xl mb-5 lg:text-center">{{ name }}</p>
           <p class="mb-5">{{ job }}</p>
+          <P>EMAIL:</P>
           <p>{{ Email }}</p>
         </div>
       </div>
