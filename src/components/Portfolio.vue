@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import Chevron from './images/Chevron.vue'
+import Chevron from '@/components/images/Chevron.vue'
 const emit = defineEmits<{
   (e: 'toDetail', index: string): void
 }>()

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Collapse from './images/CollapseIcon.vue'
+import Collapse from '@/components/images/CollapseIcon.vue'
 defineProps<{
   isMenuOpen: Boolean
 }>()

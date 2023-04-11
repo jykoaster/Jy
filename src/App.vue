@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Header from './components/Header.vue'
-import Menu from './components/Menu.vue'
-import Notebook from './components/Notebook.vue'
+import Header from '@/components/Header.vue'
+import Menu from '@/components/Menu.vue'
+import Notebook from '@/components/Notebook.vue'
 import { onBeforeMount, ref } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()

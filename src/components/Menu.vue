@@ -5,7 +5,7 @@ defineEmits<{
 }>()
 const name = ref('JEREMY XIAO')
 const job = ref('FRONT-END ENGINEER')
-const Email = ref('EMAIL:')
+const Email = ref('YM31215@GMAIL.COM')
 const list = ref([
   {
     name: 'HOME',
@@ -39,10 +39,10 @@ const icons = ref([
       <div>
         <img src="/logo.webp" width="472" height="380" class="hidden mx-auto lg:block" alt="" />
         <div class="hidden lg:flex lg:justify-center">
-          <div class="border-2 border-white rounded-3xl text-secondary text-4xl p-10">
-            <p class="text-center mb-5">{{ name }}</p>
-            <p class="mb-5">{{ job }}</p>
-            <p>{{ Email }}</p>
+          <div class="border-2 border-white rounded-3xl text-secondary text-center text-xl p-10 lg:text-3xl">
+            <p class="text-3xl lg:text-4xl mb-5">{{ name }}</p>
+            <p class="mb-5 whitespace-nowrap">{{ job }}</p>
+            <p class="whitespace-nowrap">{{ Email }}</p>
           </div>
         </div>
       </div>

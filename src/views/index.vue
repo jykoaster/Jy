@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import Home from '../components/Home.vue'
-import About from '../components/About.vue'
-import Portfolio from '../components/Portfolio.vue'
+import Home from '@/components/Home.vue'
+import About from '@/components/About.vue'
+import Portfolio from '@/components/Portfolio.vue'
 import { useRouter } from 'vue-router'
-import { onBeforeMount } from 'vue'
 const router = useRouter()
 const toPortfolioDetail = (id: string) => {
   router.push(`/portfolio/${id}`)
