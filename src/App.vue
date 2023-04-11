@@ -2,15 +2,31 @@
 import Header from './components/Header.vue'
 import Menu from './components/Menu.vue'
 import Notebook from './components/Notebook.vue'
-import { onMounted, ref } from 'vue'
+import { onBeforeMount, ref } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const menu = ref(false)
 const isInit = ref(false)
-onMounted(() => {
-  setTimeout(() => {
-    isInit.value = true
-  }, 1000)
+const imagesToPreload = ['/NB.webp', '/NB_m.webp', '/man.webp', '/port1.webp', '/port2.webp']
+onBeforeMount(() => {
+  const images = imagesToPreload.map((imageSrc) => {
+    return new Promise((resolve, reject) => {
+      const img = new Image()
+      img.src = imageSrc
+      img.onload = resolve
+      img.onerror = reject
+    })
+  })
+
+  Promise.all(images)
+    .then(() => {
+      setTimeout(() => {
+        isInit.value = true
+      }, 1000)
+    })
+    .catch((error) => {
+      console.error(error.message)
+    })
 })
 
 const openMenu = () => {

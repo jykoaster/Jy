@@ -16,8 +16,6 @@ const experience = ref([
     company: 'Some company',
   },
 ])
-const man = new Image()
-man.src = '/man.webp'
 </script>
 <template>
   <div class="px-5 flex flex-col justify-center text-secondary my-20 lg:px-0">
@@ -26,7 +24,7 @@ man.src = '/man.webp'
       <p class="absolute left-14 top-20">{{ text1 }}</p>
       <p class="absolute right-20 top-40 lg:right-60">{{ text1 }}</p>
     </div>
-    <img :src="man.src" class="mx-auto mb-10" alt="" />
+    <img src="/man.webp" class="mx-auto mb-10" alt="" />
     <div v-for="v in experience" class="flex mb-5 lg:mx-20">
       <div class="w-20 h-20 rounded-full bg-third text-secondary flex justify-center items-center lg:w-32 lg:h-32">
         {{ v.time }}

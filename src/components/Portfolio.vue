@@ -18,11 +18,6 @@ const portfolios = ref([
   },
 ])
 
-portfolios.value.forEach((element) => {
-  const image = new Image()
-  image.src = element.src
-})
-
 const generate = ref('THE GENERATE')
 const effect = ref('')
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 const name = ref('JEREMY XIAO')
 const job = ref('FRONT-END ENGINEER')
 const Email = ref('YM31215@GMAIL.COM')
@@ -13,19 +13,13 @@ const icons = ref([
     name: 'github',
   },
 ])
-const nbImage = new Image()
-nbImage.src = '/NB.webp'
-const nbMobileImage = new Image()
-nbMobileImage.src = '/NB_m.webp'
-const logo = new Image()
-logo.src = '/logo.webp'
 </script>
 <template>
   <div class="px-5 lg:px-0 lg:flex lg:flex-col lg:justify-center lg:min-h-[calc(100vh-96px)]">
     <div class="flex flex-col justify-between relative lg:flex-row">
-      <img :src="nbMobileImage.src" class="lg:hidden w-full" alt="NB_m" />
+      <img src="NB_m.webp" class="lg:hidden w-full" alt="NB_m" />
       <div>
-        <img :src="logo.src" class="hidden lg:block" alt="logo" />
+        <img src="logo.webp" class="hidden lg:block" alt="logo" />
         <div class="border-2 border-white rounded-3xl text-secondary text-center text-xl p-10 mt-10 lg:text-3xl">
           <p class="text-3xl lg:text-4xl mb-5">{{ name }}</p>
           <p class="mb-5 whitespace-nowrap">{{ job }}</p>
@@ -34,7 +28,7 @@ logo.src = '/logo.webp'
         </div>
       </div>
       <div class="hidden lg:block">
-        <img :src="nbImage.src" class="w-full" alt="NB" />
+        <img src="NB.webp" class="w-full" alt="NB" />
       </div>
     </div>
     <div class="hidden lg:block absolute bottom-10 right-24">

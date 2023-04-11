@@ -3,7 +3,7 @@ import * as THREE from 'three'
 import { onMounted } from 'vue'
 import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { Tween, Easing, update as updateTween } from '@tweenjs/tween.js'
+import { Tween, update as updateTween } from '@tweenjs/tween.js'
 
 onMounted(() => {
   const tar = document.getElementById('notebook') as HTMLElement
