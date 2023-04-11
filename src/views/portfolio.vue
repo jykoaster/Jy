@@ -9,7 +9,7 @@ defineEmits<{
   (e: 'goto', block: string): void
 }>()
 const heading = ref('PORTFOLIO')
-const images = ref(['/port1.png', '/port1.png', '/port1.png', '/port1.png', '/port1.png'])
+const images = ref(['/port1.webp', '/port1.webp', '/port1.webp', '/port1.webp', '/port1.webp'])
 const description = ref('This is a description')
 const goBack = ref('GO BACK')
 const goExplore = ref('GO EXPLORE')

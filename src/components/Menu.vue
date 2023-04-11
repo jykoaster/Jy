@@ -30,6 +30,8 @@ const icons = ref([
     name: 'github',
   },
 ])
+const logo = new Image()
+logo.src = '/logo.webp'
 </script>
 <template>
   <div
@@ -37,7 +39,7 @@ const icons = ref([
   >
     <div class="lg:grid lg:grid-cols-2 lg:justify-center lg:max-w-7xl lg:mx-auto">
       <div>
-        <img src="/logo.png" width="472" height="380" class="hidden mx-auto lg:block" alt="" />
+        <img :src="logo.src" width="472" height="380" class="hidden mx-auto lg:block" alt="" />
         <div class="hidden lg:flex lg:justify-center">
           <div class="border-2 border-white rounded-3xl text-secondary text-4xl p-10">
             <p class="text-center mb-5">{{ name }}</p>

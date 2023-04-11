@@ -1,31 +1,37 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import Chevron from "./images/Chevron.vue";
+import { ref } from 'vue'
+import Chevron from './images/Chevron.vue'
 const emit = defineEmits<{
-  (e: "toDetail", index: string): void;
-}>();
-const heading = ref("PORTFOLIO");
+  (e: 'toDetail', index: string): void
+}>()
+const heading = ref('PORTFOLIO')
 const portfolios = ref([
   {
-    src: "port1.png",
-    name: "NAME",
-    id: "1",
+    src: '/port1.webp',
+    name: 'NAME',
+    id: '1',
   },
   {
-    src: "port2.png",
-    name: "NAME",
-    id: "2",
+    src: '/port2.webp',
+    name: 'NAME',
+    id: '2',
   },
-]);
-const generate = ref("THE GENERATE");
-const effect = ref("");
+])
+
+portfolios.value.forEach((element) => {
+  const image = new Image()
+  image.src = element.src
+})
+
+const generate = ref('THE GENERATE')
+const effect = ref('')
 
 const toDetail = (index: string) => {
-  effect.value = index;
+  effect.value = index
   setTimeout(() => {
-    emit("toDetail", index);
-  }, 500);
-};
+    emit('toDetail', index)
+  }, 500)
+}
 </script>
 <template>
   <div class="flex flex-col justify-center text-secondary my-20 px-5 lg:px-0">
