@@ -13,7 +13,7 @@ defineEmits<{
     <div
       class="fixed flex justify-between items-center w-full h-24 py-2 z-20 bg-primary cursor-pointer px-5 top-0 lg:px-24"
     >
-      <img src="logo.webp" class="h-20 lg:h-24" alt="" @click="$router.push('/')" />
+      <img src="/logo.webp" class="h-20 lg:h-24" alt="" @click="$router.push('/')" />
       <div class="h-24 flex items-center justify-end w-full">
         <Transition name="collapse">
           <Collapse
