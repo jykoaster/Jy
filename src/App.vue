@@ -13,8 +13,6 @@ const $loading = useLoading({
 // or use inject without importing useLoading
 // const $loading =  inject('$loading')
 
-const fullPage = ref(false)
-
 const router = useRouter()
 const menu = ref(false)
 const isInit = ref(false)
@@ -27,6 +25,8 @@ const imagesToPreload = [
   '/port2.webp',
   '/texture/notebook.png',
   '/texture/notebook2.png',
+  '/texture/notebook3.png',
+  '/texture/notebook4.png',
 ]
 onBeforeMount(() => {
   const loader = $loading.show({
@@ -45,7 +45,7 @@ onBeforeMount(() => {
   Promise.all(images)
     .then(() => {
       loader.hide()
-      // isInit.value = true
+      isInit.value = true
     })
     .catch((error) => {
       console.error(error.message)
@@ -92,7 +92,7 @@ const unbind = () => {
 </script>
 
 <template>
-  <div>
+  <div v-if="isInit">
     <transition name="fade">
       <Notebook v-if="!enterIn" @enter="enterIn = true" />
     </transition>
