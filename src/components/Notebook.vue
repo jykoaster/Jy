@@ -2,7 +2,7 @@
 import * as THREE from 'three'
 import { onMounted, ref } from 'vue'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { Tween, update as updateTween } from '@tweenjs/tween.js'
+import { Tween, Easing, update as updateTween } from '@tweenjs/tween.js'
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js'
 
 const emit = defineEmits<{
@@ -25,10 +25,11 @@ const enter = () => {
   const targetRotation = Math.PI / 1.5
   const duration = 1200
   controls.autoRotate = false
-  positionTween.to(targetPosition, duration).start()
-  rotationTween.to({ angle: targetRotation }, duration).start()
+  positionTween.to(targetPosition, duration).easing(Easing.Quadratic.Out).start()
+  rotationTween.to({ angle: targetRotation }, duration).easing(Easing.Quadratic.Out).start()
   const cameraTween = new Tween({ x: camera.position.x, y: camera.position.y, z: camera.position.z })
     .to({ x: 1, y: 1, z: 0 }, duration)
+    .easing(Easing.Quadratic.Out)
     .onUpdate((obj) => {
       camera.position.x = obj.x
       camera.position.y = obj.y
@@ -156,11 +157,11 @@ onMounted(() => {
   <div class="relative">
     <div id="notebook" class="min-h-screen min-w-screen"></div>
     <div
-      class="absolute bottom-20 right-10 rounded-full w-60 h-60 text-white text-5xl flex justify-center items-center cursor-pointer hover:bg-slate-400 active:animate-bigping"
+      class="absolute bottom-20 right-10 rounded-full w-60 h-60 text-white text-5xl flex justify-center items-center cursor-pointer bg-slate-400 bg-opacity-50 hover:bg-opacity-100"
       :class="isActive && 'animate-bigping'"
       @click="enter"
     >
-      ENTER
+      <p>ENTER</p>
     </div>
   </div>
 </template>

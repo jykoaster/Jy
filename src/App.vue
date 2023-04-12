@@ -96,17 +96,17 @@ const unbind = () => {
     <transition name="fade">
       <Notebook v-if="!enterIn" @enter="enterIn = true" />
     </transition>
-    <div v-show="enterIn" class="overflow-hidden">
-      <Header :isMenuOpen="menu" @openMenu="openMenu" @close="closeMenu" />
+    <div class="overflow-hidden">
+      <transition name="fade">
+        <Header v-show="enterIn" :isMenuOpen="menu" @openMenu="openMenu" @close="closeMenu" />
+      </transition>
       <transition name="scale">
         <Menu v-if="menu" @goto="scrollTo" />
       </transition>
       <div class="max-w-7xl mx-auto">
         <router-view v-slot="{ Component }">
           <transition name="fade">
-            <keep-alive>
-              <component :is="Component" @goto="scrollTo" />
-            </keep-alive>
+            <component v-show="enterIn" :is="Component" @goto="scrollTo" />
           </transition>
         </router-view>
       </div>
