@@ -7,7 +7,15 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const menu = ref(false)
 const isInit = ref(false)
-const imagesToPreload = ['/NB.webp', '/NB_m.webp', '/man.webp', '/port1.webp', '/port2.webp']
+const imagesToPreload = [
+  '/NB.webp',
+  '/NB_m.webp',
+  '/man.webp',
+  '/port1.webp',
+  '/port2.webp',
+  '/texture/notebook.png',
+  '/texture/notebook2.png',
+]
 onBeforeMount(() => {
   const images = imagesToPreload.map((imageSrc) => {
     return new Promise((resolve, reject) => {
