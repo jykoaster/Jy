@@ -156,7 +156,7 @@ onMounted(() => {
   <div class="relative">
     <div id="notebook" class="min-h-screen min-w-screen"></div>
     <div
-      class="absolute bottom-20 right-10 rounded-full w-60 h-60 text-white text-5xl flex justify-center items-center cursor-pointer bg-slate-400 bg-opacity-50 hover:bg-opacity-100"
+      class="absolute bottom-20 right-10 rounded-full text-white flex justify-center items-center cursor-pointer bg-slate-400 bg-opacity-50 hover:bg-opacity-100 w-24 h-24 lg:text-5xl lg:w-60 lg:h-60"
       :class="isActive && 'animate-bigping'"
       @click="enter"
     >
