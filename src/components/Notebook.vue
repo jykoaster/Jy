@@ -4,6 +4,7 @@ import { onMounted } from 'vue'
 import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { Tween, update as updateTween } from '@tweenjs/tween.js'
+import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js'
 
 onMounted(() => {
   const tar = document.getElementById('notebook') as HTMLElement
@@ -196,18 +197,74 @@ onMounted(() => {
     return geometry
   }
 
-  const geometry = RoundEdgedBox(0.65, 0.03, 1, undefined, 1, 1, 3)
-  const geometry2 = RoundEdgedBox(0.65, 0.03, 1, undefined, 1, 1, 3)
+  // onProgress callback currently not supported
+  const geometry = new RoundedBoxGeometry(0.65, 0.03, 1, 20, 50)
+  const geometry2 = new RoundedBoxGeometry(0.65, 0.03, 1, 20, 50)
+  // const geometry = RoundEdgedBox(0.65, 0.03, 1, undefined, 1, 1, 3)
+  // const geometry2 = RoundEdgedBox(0.65, 0.03, 1, undefined, 1, 1, 3)
   geometry2.translate(0, 0.03, 0)
 
-  const material = new THREE.MeshLambertMaterial({ color: 0xffffff, wireframe: true })
-  const cube = new THREE.Mesh(geometry, material)
-  const cube2 = new THREE.Mesh(geometry2, material)
+  const loader = new THREE.TextureLoader()
+
+  const texture = loader.load('/texture/notebook.png')
+  texture.minFilter = THREE.NearestFilter
+  texture.rotation = Math.PI / 2
+  texture.wrapS = texture.wrapT = THREE.RepeatWrapping
+
+  const texture2 = loader.load('/texture/notebook2.png')
+  texture2.minFilter = THREE.NearestFilter
+  texture2.rotation = -Math.PI / 2
+  texture2.wrapS = texture2.wrapT = THREE.RepeatWrapping
+
+  const materials = [
+    new THREE.MeshStandardMaterial({
+      color: '#111111',
+    }), // 背面
+    new THREE.MeshStandardMaterial({
+      color: '#111111',
+    }),
+    new THREE.MeshStandardMaterial({
+      map: texture2,
+    }), // 正面
+    new THREE.MeshStandardMaterial({
+      color: '#111111',
+    }),
+    new THREE.MeshStandardMaterial({
+      color: '#111111',
+    }),
+    new THREE.MeshStandardMaterial({
+      color: '#111111',
+    }),
+  ]
+
+  const materials2 = [
+    new THREE.MeshStandardMaterial({
+      color: '#111111',
+    }), // 背面
+    new THREE.MeshStandardMaterial({
+      color: '#111111',
+    }),
+    new THREE.MeshStandardMaterial({
+      color: '#111111',
+    }),
+    new THREE.MeshStandardMaterial({
+      map: texture,
+    }), // 正面
+    new THREE.MeshStandardMaterial({
+      color: '#111111',
+    }),
+    new THREE.MeshStandardMaterial({
+      color: '#111111',
+    }),
+  ]
+
+  const cube = new THREE.Mesh(geometry, materials)
+  const cube2 = new THREE.Mesh(geometry2, materials2)
   scene.add(cube, cube2)
 
   const axis = new THREE.Vector3(0, 0, 1)
   const targetPosition = new THREE.Vector3(
-    -0.325 - 0.325 * Math.cos(Math.PI - Math.PI / 1.5),
+    -0.325 - 0.325 * Math.cos(Math.PI - Math.PI / 1.5) + 0.02,
     0.325 * Math.cos(Math.PI / 1.5 - Math.PI / 2) + 0.03,
     0
   )
