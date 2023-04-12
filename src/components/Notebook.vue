@@ -1,10 +1,18 @@
 <script setup lang="ts">
 import * as THREE from 'three'
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { Tween, update as updateTween } from '@tweenjs/tween.js'
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js'
+
+const props = defineProps({
+  start: Boolean,
+})
+
+const startAni = computed(() => {
+  return props.start
+})
 
 onMounted(() => {
   const tar = document.getElementById('notebook') as HTMLElement
@@ -23,7 +31,7 @@ onMounted(() => {
   renderer.setSize(width, height)
 
   const controls = new OrbitControls(camera, renderer.domElement)
-
+  controls.autoRotate = true
   tar.appendChild(renderer.domElement)
   const RoundEdgedBox = (
     width?: number,
@@ -270,6 +278,7 @@ onMounted(() => {
   )
   const targetRotation = Math.PI / 1.5
   const duration = 1000
+  controls.autoRotate = false
   const positionTween = new Tween(cube2.position).to(targetPosition, duration).start()
   const rotationTween = new Tween({ angle: 0 })
     .to({ angle: targetRotation }, duration)
@@ -287,7 +296,6 @@ onMounted(() => {
       camera.lookAt(new THREE.Vector3(0, 0, 0))
     })
     .start()
-
   const animate = () => {
     requestAnimationFrame(animate)
     controls.update()

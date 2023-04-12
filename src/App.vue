@@ -16,6 +16,7 @@ const imagesToPreload = [
   '/texture/notebook.png',
   '/texture/notebook2.png',
 ]
+const startAni = ref(false)
 onBeforeMount(() => {
   const images = imagesToPreload.map((imageSrc) => {
     return new Promise((resolve, reject) => {
@@ -28,6 +29,7 @@ onBeforeMount(() => {
 
   Promise.all(images)
     .then(() => {
+      startAni.value = true
       setTimeout(() => {
         isInit.value = true
       }, 1000)
@@ -84,7 +86,7 @@ const unbind = () => {
     </Transition>
     <div class="max-w-7xl mx-auto">
       <transition name="fade">
-        <Notebook v-if="!isInit" />
+        <Notebook v-if="!isInit" :start="startAni" />
       </transition>
       <router-view v-slot="{ Component }">
         <transition name="fade">
