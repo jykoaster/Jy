@@ -76,11 +76,11 @@ const unbind = () => {
     </Transition>
     <div class="max-w-7xl mx-auto">
       <transition name="fade">
-        <Notebook />
+        <Notebook v-if="!isInit" />
       </transition>
       <router-view v-slot="{ Component }">
         <transition name="fade">
-          <component :is="Component" @goto="scrollTo" />
+          <component v-if="isInit" :is="Component" @goto="scrollTo" />
         </transition>
       </router-view>
     </div>
