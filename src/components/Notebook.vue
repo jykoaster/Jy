@@ -23,7 +23,7 @@ const enter = () => {
     0
   )
   const targetRotation = Math.PI / 1.5
-  const duration = 1000
+  const duration = 1200
   controls.autoRotate = false
   positionTween.to(targetPosition, duration).start()
   rotationTween.to({ angle: targetRotation }, duration).start()
@@ -46,11 +46,11 @@ onMounted(() => {
   const width = tar.offsetWidth
   const height = tar.offsetHeight
   const scene = new THREE.Scene()
-  scene.background = new THREE.Color(0x111111)
+  scene.background = new THREE.Color(0x000000)
   camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
   camera.position.z = 2
   camera.position.y = 2
-  const light = new THREE.AmbientLight(0x404040) // soft white light
+  const light = new THREE.AmbientLight(0xffffff) // soft white light
   scene.add(light)
 
   const renderer = new THREE.WebGLRenderer()
