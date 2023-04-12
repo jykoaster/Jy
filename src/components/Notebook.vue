@@ -12,8 +12,8 @@ const emit = defineEmits<{
 const isActive = ref(false)
 let camera = null as any
 let controls = null as any
-let positionTween = null as any
-let rotationTween = null as any
+let cube = null as any
+let cube2 = null as any
 
 const enter = () => {
   isActive.value = true
@@ -25,8 +25,15 @@ const enter = () => {
   const targetRotation = Math.PI / 1.5
   const duration = 1200
   controls.autoRotate = false
-  positionTween.to(targetPosition, duration).easing(Easing.Quadratic.Out).start()
-  rotationTween.to({ angle: targetRotation }, duration).easing(Easing.Quadratic.Out).start()
+
+  new Tween(cube2.position).to(targetPosition, duration).easing(Easing.Quadratic.Out).start()
+  new Tween({ angle: 0 })
+    .to({ angle: targetRotation }, duration)
+    .easing(Easing.Quadratic.Out)
+    .onUpdate((obj) => {
+      cube2.rotation.z = obj.angle
+    })
+    .start()
   const cameraTween = new Tween({ x: camera.position.x, y: camera.position.y, z: camera.position.z })
     .to({ x: 1, y: 1, z: 0 }, duration)
     .easing(Easing.Quadratic.Out)
@@ -130,17 +137,9 @@ onMounted(() => {
     }),
   ]
 
-  const cube = new THREE.Mesh(geometry, materials)
-  const cube2 = new THREE.Mesh(geometry2, materials2)
+  cube = new THREE.Mesh(geometry, materials)
+  cube2 = new THREE.Mesh(geometry2, materials2)
   scene.add(cube, cube2)
-
-  positionTween = new Tween(cube2.position).start()
-  rotationTween = new Tween({ angle: 0 })
-
-    .onUpdate((obj) => {
-      cube2.rotation.z = obj.angle
-    })
-    .start()
 
   const animate = () => {
     requestAnimationFrame(animate)
