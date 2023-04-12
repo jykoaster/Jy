@@ -10,8 +10,6 @@ const $loading = useLoading({
   // options
   backgroundColor: '#111111',
 })
-// or use inject without importing useLoading
-// const $loading =  inject('$loading')
 
 const router = useRouter()
 const menu = ref(false)
@@ -106,7 +104,7 @@ const unbind = () => {
       <div class="max-w-7xl mx-auto">
         <router-view v-slot="{ Component }">
           <transition name="fade">
-            <component v-show="enterIn" :is="Component" @goto="scrollTo" />
+            <component v-if="enterIn" :is="Component" @goto="scrollTo" />
           </transition>
         </router-view>
       </div>

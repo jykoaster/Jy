@@ -3,7 +3,7 @@ import { createRouter, createWebHashHistory, RouterOptions, Router, RouteRecordR
 const routes: RouteRecordRaw[] = [
   { path: '/', name: 'Index', component: () => import('@/views/index.vue') },
   {
-    path: '/portfolio/:id',
+    path: '/portfolio',
     name: 'Portfolio',
     component: () => import('@/views/portfolio.vue'),
   },

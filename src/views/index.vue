@@ -4,8 +4,8 @@ import About from '@/components/About.vue'
 import Portfolio from '@/components/Portfolio.vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-const toPortfolioDetail = (id: string) => {
-  router.push(`/portfolio/${id}`)
+const toPortfolioDetail = (data: any) => {
+  router.push({ name: 'portfolio', params: data })
 }
 </script>
 <template>

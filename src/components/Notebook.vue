@@ -34,7 +34,7 @@ const enter = () => {
       cube2.rotation.z = obj.angle
     })
     .start()
-  const cameraTween = new Tween({ x: camera.position.x, y: camera.position.y, z: camera.position.z })
+  new Tween({ x: camera.position.x, y: camera.position.y, z: camera.position.z })
     .to({ x: 1, y: 1, z: 0 }, duration)
     .easing(Easing.Quadratic.Out)
     .onUpdate((obj) => {

@@ -22,8 +22,8 @@ const experience = ref([
   <div class="px-5 flex flex-col justify-center text-secondary my-20 lg:px-0">
     <p class="text-3xl pb-2 border-b-2 border-secondary">{{ heading }}</p>
     <div class="relative w-full h-60">
-      <p class="absolute left-14 top-20 text-xl">{{ text1 }}</p>
-      <p class="absolute right-20 top-40 text-xl lg:right-60">{{ text2 }}</p>
+      <p class="absolute left-14 top-20 text-lg lg:text-2xl">{{ text1 }}</p>
+      <p class="absolute right-20 top-40 text-lg lg:text-2xl lg:right-60">{{ text2 }}</p>
     </div>
     <img src="/man.webp" class="mx-auto mb-10" alt="" />
     <div v-for="v in experience" class="flex mb-5 lg:mx-20">

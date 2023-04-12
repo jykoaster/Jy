@@ -2,13 +2,20 @@
 import { ref } from 'vue'
 import Chevron from '@/components/images/Chevron.vue'
 const emit = defineEmits<{
-  (e: 'toDetail', index: string): void
+  (e: 'toDetail', data: any): void
 }>()
 const heading = ref('PORTFOLIO')
 const portfolios = ref([
   {
-    src: '/port1.webp',
-    name: 'NAME',
+    src: '/portfolio/shangxiang/1.PNG',
+    images: [
+      '/portfolio/shangxiang/1.PNG',
+      '/portfolio/shangxiang/2.PNG',
+      '/portfolio/shangxiang/3.PNG',
+      '/portfolio/shangxiang/4.PNG',
+    ],
+    name: '尚享空間',
+    descriptions: '使用Nuxt.js開發的CMS系統',
     id: '1',
   },
   {
@@ -24,7 +31,10 @@ const effect = ref('')
 const toDetail = (index: string) => {
   effect.value = index
   setTimeout(() => {
-    emit('toDetail', index)
+    emit(
+      'toDetail',
+      portfolios.value.find((el) => el.id === index)
+    )
   }, 500)
 }
 </script>
@@ -41,7 +51,7 @@ const toDetail = (index: string) => {
       </div>
       <div class="flex justify-end">
         <div
-          class="-mt-10 w-3/4 p-5 rounded-3xl bg-secondary flex flex-col justify-between text-primary lg:mx-0 lg:-mt-36 lg:w-1/3 lg:h-56 lg:p-12"
+          class="border border-slate-300 -mt-10 w-3/4 p-5 rounded-3xl bg-secondary flex flex-col justify-between text-primary lg:mx-0 lg:-mt-36 lg:w-1/3 lg:h-56 lg:p-12"
         >
           <p class="text-xl">{{ v.name }}</p>
           <div class="flex justify-between items-end">

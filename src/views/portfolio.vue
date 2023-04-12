@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRoute } from 'vue-router'
 
 defineProps<{
   images: Array<any>
@@ -8,8 +9,11 @@ defineProps<{
 defineEmits<{
   (e: 'goto', block: string): void
 }>()
+
+const route = useRoute()
+console.log(route.params)
 const heading = ref('PORTFOLIO')
-const images = ref(['/port1.webp', '/port1.webp', '/port1.webp', '/port1.webp', '/port1.webp'])
+const images = ref(route.params.images)
 const description = ref('This is a description')
 const goBack = ref('GO BACK')
 const goExplore = ref('GO EXPLORE')
@@ -29,18 +33,17 @@ const getImage = (url: string) => {
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-20">
       <div
         v-for="(v, i) in images"
-        class="relative rounded-xl w-full h-0 p-0 bg-no-repeat bg-cover bg-center bg-opacity-50"
+        class="relative rounded-xl w-full h-0 p-0 cursor-pointer bg-no-repeat bg-cover bg-center bg-opacity-50 transition-all hover:scale-[2] hover:z-10"
         style="padding-bottom: 60%"
         :style="{ backgroundImage: `url(${getImage(v)})` }"
         @mouseover="hover = i"
         @mouseleave="hover = null"
       >
-        <div
-          v-show="hover === i"
+        <!-- <div
           class="absolute inset-0 bg-slate-600 bg-opacity-80 text-2xl flex justify-center items-center cursor-pointer rounded-xl"
         >
           <font-awesome-icon icon="fa-solid fa-up-right-and-down-left-from-center " />
-        </div>
+        </div> -->
       </div>
     </div>
     <p class="text-center mt-24 text-xl">{{ description }}</p>
