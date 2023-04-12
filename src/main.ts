@@ -2,6 +2,8 @@ import { createApp } from 'vue'
 import '@/style.css'
 import App from '@/App.vue'
 import router from '@/router/index'
+import { LoadingPlugin } from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/css/index.css'
 
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -15,4 +17,4 @@ import { faNpm, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 library.add(faNpm, faGithub, faXmark, faUpRightAndDownLeftFromCenter)
 
-createApp(App).use(router).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
+createApp(App).use(router).use(LoadingPlugin).component('font-awesome-icon', FontAwesomeIcon).mount('#app')

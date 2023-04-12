@@ -4,9 +4,21 @@ import Menu from '@/components/Menu.vue'
 import Notebook from '@/components/Notebook.vue'
 import { onBeforeMount, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useLoading } from 'vue-loading-overlay'
+
+const $loading = useLoading({
+  // options
+  backgroundColor: '#111111',
+})
+// or use inject without importing useLoading
+// const $loading =  inject('$loading')
+
+const fullPage = ref(false)
+
 const router = useRouter()
 const menu = ref(false)
 const isInit = ref(false)
+const enterIn = ref(false)
 const imagesToPreload = [
   '/NB.webp',
   '/NB_m.webp',
@@ -16,8 +28,11 @@ const imagesToPreload = [
   '/texture/notebook.png',
   '/texture/notebook2.png',
 ]
-const startAni = ref(false)
 onBeforeMount(() => {
+  const loader = $loading.show({
+    // Optional parameters
+  })
+
   const images = imagesToPreload.map((imageSrc) => {
     return new Promise((resolve, reject) => {
       const img = new Image()
@@ -29,10 +44,8 @@ onBeforeMount(() => {
 
   Promise.all(images)
     .then(() => {
-      startAni.value = true
-      setTimeout(() => {
-        isInit.value = true
-      }, 1000)
+      loader.hide()
+      // isInit.value = true
     })
     .catch((error) => {
       console.error(error.message)
@@ -79,20 +92,24 @@ const unbind = () => {
 </script>
 
 <template>
-  <div class="overflow-hidden">
-    <Header :isMenuOpen="menu" @openMenu="openMenu" @close="closeMenu" />
-    <Transition name="scale">
-      <Menu v-if="menu" @goto="scrollTo" />
-    </Transition>
-    <div class="max-w-7xl mx-auto">
-      <transition name="fade">
-        <Notebook v-if="!isInit" :start="startAni" />
+  <div>
+    <transition name="fade">
+      <Notebook v-if="!enterIn" @enter="enterIn = true" />
+    </transition>
+    <div v-show="enterIn" class="overflow-hidden">
+      <Header :isMenuOpen="menu" @openMenu="openMenu" @close="closeMenu" />
+      <transition name="scale">
+        <Menu v-if="menu" @goto="scrollTo" />
       </transition>
-      <router-view v-slot="{ Component }">
-        <transition name="fade">
-          <component v-if="isInit" :is="Component" @goto="scrollTo" />
-        </transition>
-      </router-view>
+      <div class="max-w-7xl mx-auto">
+        <router-view v-slot="{ Component }">
+          <transition name="fade">
+            <keep-alive>
+              <component :is="Component" @goto="scrollTo" />
+            </keep-alive>
+          </transition>
+        </router-view>
+      </div>
     </div>
   </div>
 </template>
