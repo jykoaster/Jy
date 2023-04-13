@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory, RouterOptions, Router, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory, RouterOptions, Router, RouteRecordRaw, START_LOCATION } from 'vue-router'
 
 const routes: RouteRecordRaw[] = [
   { path: '/', name: 'Index', component: () => import('@/views/index.vue') },
@@ -19,9 +19,13 @@ const routes: RouteRecordRaw[] = [
 ]
 
 const options: RouterOptions = {
-  history: createWebHashHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
   scrollBehavior(to, from, savedPosition) {
+    if (from === START_LOCATION) {
+      window.location.hash = ''
+      return { top: 0 }
+    }
     if (to.hash) {
       return { el: to.hash, top: 96, behavior: 'smooth' }
     } else {

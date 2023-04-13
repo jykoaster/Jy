@@ -7,6 +7,9 @@ import { resolve } from 'path'
 export default defineConfig({
   base: '/',
   plugins: [vue(), pluginRewriteAll()],
+  server: {
+    host: '0.0.0.0',
+  },
   resolve: {
     alias: [
       {

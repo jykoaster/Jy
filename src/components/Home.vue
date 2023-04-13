@@ -3,6 +3,7 @@ import { ref } from 'vue'
 const name = ref('JEREMY XIAO')
 const job = ref('FRONT-END')
 const Email = ref('YM31215@GMAIL.COM')
+const show = ref(false)
 const icons = ref([
   {
     icon: 'fa-brands fa-npm',
@@ -13,22 +14,32 @@ const icons = ref([
     name: 'github',
   },
 ])
+setTimeout(() => {
+  show.value = true
+}, 500)
 </script>
 <template>
   <div class="px-5 lg:px-0 lg:flex lg:flex-col lg:justify-center lg:min-h-[calc(100vh-96px)]">
     <div class="flex flex-col justify-between relative lg:flex-row">
-      <img src="/NB_m.webp" class="lg:hidden w-full" alt="NB_m" />
+      <Transition appear name="topIn">
+        <img src="/NB_m.webp" class="lg:hidden w-full" alt="NB_m" />
+      </Transition>
       <div>
-        <img src="/logo.webp" class="hidden lg:block" alt="logo" />
-        <div class="border-2 border-white rounded-3xl text-secondary text-center text-xl p-10 mt-10 lg:text-3xl">
-          <p class="text-3xl lg:text-4xl mb-5">{{ name }}</p>
-          <p class="mb-5 whitespace-nowrap">{{ job }}</p>
-          <p class="whitespace-nowrap">{{ Email }}</p>
-          <p></p>
-        </div>
+        <Transition appear name="bottomIn">
+          <img src="/logo.webp" class="hidden lg:block" alt="logo" />
+        </Transition>
+        <Transition appear name="leftIn">
+          <div class="border-2 border-white rounded-3xl text-secondary text-center text-xl p-10 mt-10 lg:text-3xl">
+            <p class="text-3xl lg:text-4xl mb-5">{{ name }}</p>
+            <p class="mb-5 whitespace-nowrap">{{ job }}</p>
+            <p class="whitespace-nowrap">{{ Email }}</p>
+          </div>
+        </Transition>
       </div>
       <div class="hidden lg:block">
-        <img src="/NB.webp" class="w-full" alt="NB" />
+        <Transition appear name="rightIn">
+          <img src="/NB.webp" class="w-full" alt="NB" />
+        </Transition>
       </div>
     </div>
     <div class="hidden lg:block absolute bottom-10 right-24">
@@ -41,3 +52,47 @@ const icons = ref([
     </div>
   </div>
 </template>
+<style scoped lang="scss">
+.topIn-enter-active,
+.topIn-leave-active {
+  transition: all 0.5s ease-in-out 0.5s;
+}
+
+.topIn-enter-from,
+.topIn-leave-to {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+.bottomIn-enter-active,
+.bottomIn-leave-active {
+  transition: all 0.5s ease-in-out 0.5s;
+}
+
+.bottomIn-enter-from,
+.bottomIn-leave-to {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.leftIn-enter-active,
+.leftIn-leave-active {
+  transition: all 0.5s ease-in-out 1s;
+}
+
+.leftIn-enter-from,
+.leftIn-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.rightIn-enter-active,
+.rightIn-leave-active {
+  transition: all 0.5s ease-in-out 1.5s;
+}
+
+.rightIn-enter-from,
+.rightIn-leave-to {
+  opacity: 0;
+  transform: translateX(100%);
+}
+</style>

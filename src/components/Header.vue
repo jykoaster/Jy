@@ -38,7 +38,7 @@ defineEmits<{
     </div>
   </div>
 </template>
-<style scope lang="scss">
+<style scoped lang="scss">
 .collapse-enter-active,
 .collapse-leave-active {
   transition: opacity 0.5s, transform 0.5s ease;
@@ -64,7 +64,7 @@ defineEmits<{
 }
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease;
 }
 
 .fade-enter-from,

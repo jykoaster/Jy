@@ -10,6 +10,8 @@ const emit = defineEmits<{
 }>()
 
 const isActive = ref(false)
+const showBtn = ref(true)
+
 let camera = null as any
 let controls = null as any
 let cube = null as any
@@ -17,13 +19,16 @@ let cube2 = null as any
 
 const enter = () => {
   isActive.value = true
+  setTimeout(() => {
+    showBtn.value = false
+  }, 700)
   const targetPosition = new THREE.Vector3(
     -0.325 - 0.325 * Math.cos(Math.PI - Math.PI / 1.5) + 0.02,
     0.325 * Math.cos(Math.PI / 1.5 - Math.PI / 2) + 0.03,
     0
   )
   const targetRotation = Math.PI / 1.5
-  const duration = 1200
+  const duration = 1000
   controls.autoRotate = false
 
   new Tween(cube2.position).to(targetPosition, duration).easing(Easing.Quadratic.Out).start()
@@ -46,7 +51,7 @@ const enter = () => {
     .start()
   setTimeout(() => {
     emit('enter')
-  }, duration - 200)
+  }, duration - 300)
 }
 
 onMounted(() => {
@@ -153,14 +158,28 @@ onMounted(() => {
 })
 </script>
 <template>
-  <div class="relative">
-    <div id="notebook" class="min-h-screen min-w-screen"></div>
-    <div
-      class="absolute bottom-24 right-10 rounded-full text-white flex justify-center items-center cursor-pointer bg-slate-400 bg-opacity-50 hover:bg-opacity-100 w-24 h-24 lg:bottom-20 lg:text-5xl lg:w-44 lg:h-44"
-      :class="isActive && 'animate-bigping'"
-      @click="enter"
-    >
-      <p>ENTER</p>
+  <div class="fixed top-0 bottom-0 right-0 left-0">
+    <div class="relative">
+      <div id="notebook" class="min-h-screen min-w-screen"></div>
+      <div
+        v-show="showBtn"
+        class="absolute bottom-24 right-10 rounded-full text-white flex justify-center items-center cursor-pointer bg-slate-400 bg-opacity-50 hover:bg-opacity-100 w-24 h-24 lg:bottom-20 lg:text-5xl lg:w-44 lg:h-44"
+        :class="isActive && 'animate-bigping'"
+        @click="enter"
+      >
+        <p>ENTER</p>
+      </div>
     </div>
   </div>
 </template>
+<style scoped lang="scss">
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 1s ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

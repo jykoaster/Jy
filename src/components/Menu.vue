@@ -4,7 +4,7 @@ defineEmits<{
   (e: 'goto', block: string): void
 }>()
 const name = ref('JEREMY XIAO')
-const job = ref('FRONT-END ENGINEER')
+const job = ref('FRONT-END')
 const Email = ref('YM31215@GMAIL.COM')
 const list = ref([
   {
@@ -33,7 +33,7 @@ const icons = ref([
 </script>
 <template>
   <div
-    class="flex flex-col justify-center fixed bottom-0 right-0 left-0 min-h-screen min-w-screen z-20 bg-primary py-2 lg:px-24"
+    class="flex flex-col justify-center fixed bottom-0 right-0 left-0 min-h-full min-w-screen z-20 bg-primary py-2 lg:px-24"
   >
     <div class="lg:grid lg:grid-cols-2 lg:justify-center lg:max-w-7xl lg:mx-auto">
       <div>

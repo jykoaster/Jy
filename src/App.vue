@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Header from '@/components/Header.vue'
 import Menu from '@/components/Menu.vue'
-import Notebook from '@/components/Notebook.vue'
+// import Notebook from '@/components/Notebook.vue'
 import { onBeforeMount, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useLoading } from 'vue-loading-overlay'
@@ -15,7 +15,7 @@ const router = useRouter()
 const menu = ref(false)
 const isInit = ref(false)
 
-const enterIn = ref(route.fullPath !== '/')
+const enterIn = ref(route.name !== 'Index')
 const imagesToPreload = [
   '/NB.webp',
   '/NB_m.webp',
@@ -83,9 +83,6 @@ const unbind = () => {
 
 <template>
   <div v-if="isInit">
-    <transition name="fade">
-      <Notebook v-if="!enterIn" @enter="enterIn = true" />
-    </transition>
     <div class="overflow-hidden">
       <transition name="fade">
         <Header v-show="enterIn" :isMenuOpen="menu" @openMenu="openMenu" @close="closeMenu" />
@@ -96,7 +93,7 @@ const unbind = () => {
       <div class="max-w-7xl mx-auto">
         <router-view v-slot="{ Component }">
           <transition name="fade">
-            <component v-if="enterIn" :is="Component" @goto="scrollTo" />
+            <component :enterIn="enterIn" :is="Component" @goto="scrollTo" @enter="enterIn = true" />
           </transition>
         </router-view>
       </div>
@@ -118,10 +115,7 @@ const unbind = () => {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.5s ease-in-out;
-}
-.fade-enter-active {
-  transition-delay: 0.5s;
+  transition: all 0.8s ease-in-out;
 }
 
 .fade-enter-from,

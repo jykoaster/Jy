@@ -28,9 +28,9 @@ const effect = ref('')
 
 const toDetail = (id: string) => {
   effect.value = id
-  setTimeout(() => {
-    emit('toDetail', id)
-  }, 500)
+  // setTimeout(() => {
+  emit('toDetail', id)
+  // }, 200)
 }
 </script>
 <template>
@@ -48,7 +48,7 @@ const toDetail = (id: string) => {
         <div
           class="border border-slate-300 -mt-10 w-3/4 p-5 rounded-3xl bg-secondary flex flex-col justify-between text-primary lg:mx-0 lg:-mt-36 lg:w-1/3 lg:h-56 lg:p-12"
         >
-          <p class="text-lg lg:text-xl">{{ v.name }}</p>
+          <p class="text-lg font-bold lg:text-2xl">{{ v.name }}</p>
           <div class="flex justify-between items-end">
             <p class="text-sm lg:text-base">{{ generate }}</p>
             <div
