@@ -93,13 +93,7 @@ const getImage = (url: string) => {
         :style="{ backgroundImage: `url(${getImage(v)})` }"
         @mouseover="hover = i"
         @mouseleave="hover = null"
-      >
-        <!-- <div
-          class="absolute inset-0 bg-slate-600 bg-opacity-80 text-2xl flex justify-center items-center cursor-pointer rounded-xl"
-        >
-          <font-awesome-icon icon="fa-solid fa-up-right-and-down-left-from-center " />
-        </div> -->
-      </div>
+      ></div>
     </div>
     <p v-html="description" class="text-center mt-24 text-xl"></p>
     <div class="flex justify-between items-center mt-20 lg:mx-40">

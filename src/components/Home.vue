@@ -3,7 +3,6 @@ import { ref } from 'vue'
 const name = ref('JEREMY XIAO')
 const job = ref('FRONT-END')
 const Email = ref('YM31215@GMAIL.COM')
-const show = ref(false)
 const icons = ref([
   {
     icon: 'fa-brands fa-npm',
@@ -14,14 +13,11 @@ const icons = ref([
     name: 'github',
   },
 ])
-setTimeout(() => {
-  show.value = true
-}, 500)
 </script>
 <template>
   <div class="px-5 lg:px-0 lg:flex lg:flex-col lg:justify-center lg:min-h-[calc(100vh-96px)]">
     <div class="flex flex-col justify-between relative lg:flex-row">
-      <Transition appear name="topIn">
+      <Transition appear name="fade">
         <img src="/NB_m.webp" class="lg:hidden w-full" alt="NB_m" />
       </Transition>
       <div>
@@ -37,7 +33,7 @@ setTimeout(() => {
         </Transition>
       </div>
       <div class="hidden lg:block">
-        <Transition appear name="rightIn">
+        <Transition appear name="fade">
           <img src="/NB.webp" class="w-full" alt="NB" />
         </Transition>
       </div>
@@ -53,16 +49,16 @@ setTimeout(() => {
   </div>
 </template>
 <style scoped lang="scss">
-.topIn-enter-active,
-.topIn-leave-active {
-  transition: all 0.5s ease-in-out 0.5s;
-}
+// .topIn-enter-active,
+// .topIn-leave-active {
+//   transition: all 0.5s ease-in-out 0.5s;
+// }
 
-.topIn-enter-from,
-.topIn-leave-to {
-  opacity: 0;
-  transform: translateY(-100%);
-}
+// .topIn-enter-from,
+// .topIn-leave-to {
+//   opacity: 0;
+//   transform: translateY(-100%);
+// }
 .bottomIn-enter-active,
 .bottomIn-leave-active {
   transition: all 0.5s ease-in-out 0.5s;
@@ -85,14 +81,13 @@ setTimeout(() => {
   transform: translateX(-100%);
 }
 
-.rightIn-enter-active,
-.rightIn-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: all 0.5s ease-in-out 1.5s;
 }
 
-.rightIn-enter-from,
-.rightIn-leave-to {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
-  transform: translateX(100%);
 }
 </style>

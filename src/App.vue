@@ -26,6 +26,9 @@ const imagesToPreload = [
   '/texture/notebook2.png',
   '/texture/notebook3.png',
   '/texture/notebook4.png',
+  '/portfolio/ordering/14.PNG',
+  '/portfolio/inmood/1.PNG',
+  '/portfolio/shangxiang/1.PNG',
 ]
 onBeforeMount(() => {
   const loader = $loading.show({
@@ -52,33 +55,33 @@ onBeforeMount(() => {
 })
 
 const openMenu = () => {
-  inserted()
+  // inserted()
   menu.value = true
 }
 
 const closeMenu = () => {
-  unbind()
+  // unbind()
   menu.value = false
 }
 
 const scrollTo = (block: string) => {
-  unbind()
+  // unbind()
   menu.value = false
   router.push({ name: 'Index', hash: `#${block}` })
 }
 
-const inserted = () => {
-  const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
-  document.body.style.cssText += 'position:fixed;width:100%;top:-' + scrollTop + 'px;'
-}
+// const inserted = () => {
+//   const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
+//   document.body.style.cssText += 'position:fixed;width:100%;top:-' + scrollTop + 'px;'
+// }
 
-const unbind = () => {
-  const body = document.body
-  body.style.position = ''
-  const top = body.style.top
-  document.body.scrollTop = document.documentElement.scrollTop = -parseInt(top)
-  body.style.top = ''
-}
+// const unbind = () => {
+//   const body = document.body
+//   body.style.position = ''
+//   const top = body.style.top
+//   document.body.scrollTop = document.documentElement.scrollTop = -parseInt(top)
+//   body.style.top = ''
+// }
 </script>
 
 <template>
