@@ -7,7 +7,7 @@ body {
 }
 
 html {
-  font-family: 'inter';
+  font-family: inter, Noto Sans TC;
 }
 body {
   -ms-overflow-style: none; /* for Internet Explorer, Edge */

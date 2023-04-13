@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 const name = ref('JEREMY XIAO')
-const job = ref('FRONT-END ENGINEER')
+const job = ref('FRONT-END')
 const Email = ref('YM31215@GMAIL.COM')
 const icons = ref([
   {

@@ -2,39 +2,34 @@
 import { ref } from 'vue'
 import Chevron from '@/components/images/Chevron.vue'
 const emit = defineEmits<{
-  (e: 'toDetail', data: any): void
+  (e: 'toDetail', id: string): void
 }>()
 const heading = ref('PORTFOLIO')
 const portfolios = ref([
   {
-    src: '/portfolio/shangxiang/1.PNG',
-    images: [
-      '/portfolio/shangxiang/1.PNG',
-      '/portfolio/shangxiang/2.PNG',
-      '/portfolio/shangxiang/3.PNG',
-      '/portfolio/shangxiang/4.PNG',
-    ],
-    name: '尚享空間',
-    descriptions: '使用Nuxt.js開發的CMS系統',
-    id: '1',
+    src: '/portfolio/ordering/14.PNG',
+    name: 'Ordering system',
+    id: '2',
   },
   {
-    src: '/port2.webp',
-    name: 'NAME',
-    id: '2',
+    src: '/portfolio/inmood/1.PNG',
+    name: 'Inmood',
+    id: '3',
+  },
+  {
+    src: '/portfolio/shangxiang/1.PNG',
+    name: 'ShangXiang',
+    id: '1',
   },
 ])
 
 const generate = ref('THE GENERATE')
 const effect = ref('')
 
-const toDetail = (index: string) => {
-  effect.value = index
+const toDetail = (id: string) => {
+  effect.value = id
   setTimeout(() => {
-    emit(
-      'toDetail',
-      portfolios.value.find((el) => el.id === index)
-    )
+    emit('toDetail', id)
   }, 500)
 }
 </script>
@@ -44,7 +39,7 @@ const toDetail = (index: string) => {
     <div v-for="(v, i) in portfolios">
       <div class="mt-20 lg:w-10/12">
         <div
-          class="rounded-3xl w-full h-0 p-0 bg-no-repeat bg-cover bg-center"
+          class="rounded-3xl w-full h-0 p-0 bg-no-repeat bg-white bg-contain bg-center"
           style="padding-bottom: 50%"
           :style="{ backgroundImage: `url(${v.src})` }"
         ></div>
@@ -53,11 +48,11 @@ const toDetail = (index: string) => {
         <div
           class="border border-slate-300 -mt-10 w-3/4 p-5 rounded-3xl bg-secondary flex flex-col justify-between text-primary lg:mx-0 lg:-mt-36 lg:w-1/3 lg:h-56 lg:p-12"
         >
-          <p class="text-xl">{{ v.name }}</p>
+          <p class="text-lg lg:text-xl">{{ v.name }}</p>
           <div class="flex justify-between items-end">
-            <p class="text-base">{{ generate }}</p>
+            <p class="text-sm lg:text-base">{{ generate }}</p>
             <div
-              class="-mb-7 rounded-full w-20 h-20 flex justify-center items-center cursor-pointer hover:bg-slate-400"
+              class="rounded-full h-16 w-16 flex justify-center items-center cursor-pointer -mb-5 hover:bg-slate-400 lg:-mb-7 lg:w-20 lg:h-20"
               :class="effect === v.id && 'animate-bigping'"
               @click="toDetail(v.id)"
             >
