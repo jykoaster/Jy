@@ -1,86 +1,87 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref } from "vue";
+import { useRoute } from "vue-router";
 
 defineEmits<{
-  (e: 'goto', block: string): void
-}>()
+  (e: "goto", block: string): void;
+}>();
 
 const projects = [
   {
-    id: '1',
-    name: 'ShangXiang',
+    id: "1",
+    name: "ShangXiang",
     images: [
-      '/portfolio/shangxiang/1.PNG',
-      '/portfolio/shangxiang/2.PNG',
-      '/portfolio/shangxiang/3.PNG',
-      '/portfolio/shangxiang/4.PNG',
-    ],
-    descriptions: 'CMS by Nuxt.js/tailwind.css. <br/>Page module , News module.',
-    url: 'https://sunshinespace.com.tw/zh-Hant',
-  },
-  {
-    id: '2',
-    name: 'Ordering system',
-    images: [
-      '/portfolio/ordering/1.PNG',
-      '/portfolio/ordering/2.PNG',
-      '/portfolio/ordering/3.PNG',
-      '/portfolio/ordering/4.PNG',
-      '/portfolio/ordering/5.PNG',
-      '/portfolio/ordering/6.PNG',
-      '/portfolio/ordering/7.PNG',
-      '/portfolio/ordering/8.PNG',
-      '/portfolio/ordering/9.PNG',
-      '/portfolio/ordering/10.PNG',
-      '/portfolio/ordering/11.PNG',
-      '/portfolio/ordering/12.PNG',
-      '/portfolio/ordering/13.PNG',
-      '/portfolio/ordering/14.PNG',
+      "/portfolio/shangxiang/1.PNG",
+      "/portfolio/shangxiang/2.PNG",
+      "/portfolio/shangxiang/3.PNG",
+      "/portfolio/shangxiang/4.PNG",
     ],
     descriptions:
-      'Ordering system by Nuxt.js/Vuetify.js. <br />Cart module , Coupon module , Member module , Point module , Order module , Menu module , Branch module',
-    url: 'https://demo.ordering.staging.52888.tw/',
+      "CMS by Nuxt.js/tailwind.css. <br/>Page module , News module.",
+    url: "https://sunshinespace.com.tw/zh-Hant",
   },
   {
-    id: '3',
-    name: 'Inmood',
+    id: "2",
+    name: "Ordering system",
     images: [
-      '/portfolio/inmood/1.PNG',
-      '/portfolio/inmood/2.PNG',
-      '/portfolio/inmood/3.PNG',
-      '/portfolio/inmood/4.PNG',
-      '/portfolio/inmood/5.PNG',
-      '/portfolio/inmood/6.PNG',
-      '/portfolio/inmood/7.PNG',
-      '/portfolio/inmood/8.PNG',
-      '/portfolio/inmood/9.PNG',
-      '/portfolio/inmood/10.PNG',
-      '/portfolio/inmood/11.PNG',
+      "/portfolio/ordering/1.PNG",
+      "/portfolio/ordering/2.PNG",
+      "/portfolio/ordering/3.PNG",
+      "/portfolio/ordering/4.PNG",
+      "/portfolio/ordering/5.PNG",
+      "/portfolio/ordering/6.PNG",
+      "/portfolio/ordering/7.PNG",
+      "/portfolio/ordering/8.PNG",
+      "/portfolio/ordering/9.PNG",
+      "/portfolio/ordering/10.PNG",
+      "/portfolio/ordering/11.PNG",
+      "/portfolio/ordering/12.PNG",
+      "/portfolio/ordering/13.PNG",
+      "/portfolio/ordering/14.PNG",
     ],
     descriptions:
-      'CMS by Nuxt.js/tailwind.css. <br/>Shop module , Member module , Page module , Order module , News module',
-    url: 'https://yi-mu-tian.52888.tw/zh-Hant',
+      "Ordering system by Nuxt.js/Vuetify.js. <br />Cart module , Coupon module , Member module , Point module , Order module , Menu module , Branch module",
+    url: "https://demo.ordering.staging.52888.tw/",
   },
-]
+  {
+    id: "3",
+    name: "Inmood",
+    images: [
+      "/portfolio/inmood/1.PNG",
+      "/portfolio/inmood/2.PNG",
+      "/portfolio/inmood/3.PNG",
+      "/portfolio/inmood/4.PNG",
+      "/portfolio/inmood/5.PNG",
+      "/portfolio/inmood/6.PNG",
+      "/portfolio/inmood/7.PNG",
+      "/portfolio/inmood/8.PNG",
+      "/portfolio/inmood/9.PNG",
+      "/portfolio/inmood/10.PNG",
+      "/portfolio/inmood/11.PNG",
+    ],
+    descriptions:
+      "CMS by Nuxt.js/tailwind.css. <br/>Shop module , Member module , Page module , Order module , News module",
+    url: "https://yi-mu-tian.52888.tw/zh-Hant",
+  },
+];
 
-const route = useRoute()
-const tar = projects.find((el) => el.id === route.params.id)
-const heading = ref(tar?.name)
-const description = ref(tar?.descriptions)
-const images = ref(tar?.images)
-const url = ref(tar?.url)
-const goBack = ref('GO BACK')
-const goExplore = ref('GO EXPLORE')
-const hover = ref(null) as unknown
+const route = useRoute();
+const tar = projects.find((el) => el.id === route.params.id);
+const heading = ref(tar?.name);
+const description = ref(tar?.descriptions);
+const images = ref(tar?.images);
+const url = ref(tar?.url);
+const goBack = ref("GO BACK");
+const goExplore = ref("GO EXPLORE");
+const hover = ref(null) as unknown;
 const getImage = (url: string) => {
-  const baseurl = import.meta.env.BASE_URL
+  const baseurl = import.meta.env.BASE_URL;
   if (url.match(baseurl)) {
-    return url
+    return url;
   } else {
-    return baseurl + url
+    return baseurl + url;
   }
-}
+};
 </script>
 <template>
   <div class="flex flex-col justify-center text-secondary my-20 mx-5 lg:mx-0">
@@ -103,7 +104,9 @@ const getImage = (url: string) => {
       >
         {{ goBack }}
       </button>
-      <button class="mx-2 bg-secondary text-third text-base hover:text-secondary lg:text-lg">
+      <button
+        class="mx-2 bg-secondary text-third text-base hover:text-secondary lg:text-lg"
+      >
         <a :href="url" target="_blank">
           {{ goExplore }}
         </a>
@@ -116,13 +119,15 @@ button {
   @apply rounded-lg w-52 h-16 text-xl;
   &:nth-child(1) {
     display: inline-block;
-    background: linear-gradient(to left, $third-color 50%, $secondary-color 50%) right;
+    background: linear-gradient(to left, $third-color 50%, $secondary-color 50%)
+      right;
     background-size: 200%;
     transition: 0.4s ease-out;
   }
   &:nth-child(2) {
     display: inline-block;
-    background: linear-gradient(to left, $secondary-color 50%, $third-color 50%) right;
+    background: linear-gradient(to left, $secondary-color 50%, $third-color 50%)
+      right;
     background-size: 200%;
     transition: 0.4s ease-out;
   }

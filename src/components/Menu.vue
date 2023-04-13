@@ -1,45 +1,61 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue";
 defineEmits<{
-  (e: 'goto', block: string): void
-}>()
-const name = ref('JEREMY XIAO')
-const job = ref('FRONT-END')
-const Email = ref('YM31215@GMAIL.COM')
+  (e: "goto", block: string): void;
+}>();
+const name = ref("JEREMY XIAO");
+const job = ref("FRONT-END");
+const Email = ref("YM31215@GMAIL.COM");
 const list = ref([
   {
-    name: 'HOME',
-    to: 'home',
+    name: "HOME",
+    to: "home",
   },
   {
-    name: 'ABOUT',
-    to: 'about',
+    name: "ABOUT",
+    to: "about",
   },
   {
-    name: 'PORTFOLIO',
-    to: 'portfolio',
+    name: "PORTFOLIO",
+    to: "portfolio",
   },
-])
+]);
 const icons = ref([
   {
-    icon: 'fa-brands fa-npm',
-    name: 'npm',
+    icon: "fa-brands fa-npm",
+    name: "npm",
+    src: "https://www.npmjs.com/~koaster",
   },
   {
-    icon: 'fa-brands fa-github',
-    name: 'github',
+    icon: "fa-brands fa-github",
+    name: "github",
+    src: "https://github.com/jykoaster",
   },
-])
+]);
+
+const goLink = (src: string) => {
+  window.open(src, "_blank");
+};
 </script>
 <template>
   <div
     class="flex flex-col justify-center fixed bottom-0 right-0 left-0 min-h-full min-w-screen z-20 bg-primary py-2 lg:px-24"
   >
-    <div class="lg:grid lg:grid-cols-2 lg:justify-center lg:max-w-7xl lg:mx-auto">
+    <div
+      class="lg:grid lg:grid-cols-2 lg:justify-center lg:max-w-7xl lg:mx-auto"
+    >
       <div>
-        <img src="/logo.webp" width="472" height="380" class="hidden mx-auto lg:block" alt="" />
+        <img
+          src="/logo.webp"
+          width="472"
+          height="380"
+          class="hidden mx-auto lg:block"
+          alt=""
+        />
         <div class="hidden lg:flex lg:justify-center">
-          <div class="border-2 border-white rounded-3xl text-secondary text-center text-xl p-10 lg:text-3xl">
+          <div
+            class="border-2 border-white rounded-3xl text-secondary text-center text-xl p-10 lg:text-3xl"
+          >
             <p class="text-3xl lg:text-4xl mb-5">{{ name }}</p>
             <p class="mb-5 whitespace-nowrap">{{ job }}</p>
             <p class="whitespace-nowrap">{{ Email }}</p>
@@ -58,7 +74,11 @@ const icons = ref([
         </div>
       </div>
       <div class="flex justify-center items-center mt-20 lg:hidden">
-        <div v-for="v in icons" class="mx-5 rounded-full bg-third h-14 w-14 flex justify-center items-center">
+        <div
+          v-for="v in icons"
+          class="mx-5 rounded-full bg-third h-14 w-14 flex justify-center items-center"
+          @click="goLink(v.src)"
+        >
           <font-awesome-icon :icon="v.icon" class="h-8 w-8 text-secondary" />
         </div>
       </div>
@@ -69,7 +89,7 @@ const icons = ref([
 .menu-text:after {
   transition: all ease-in-out 0.2s;
   background: none repeat scroll 0 0 #ffffff;
-  content: '';
+  content: "";
   display: block;
   height: 2px;
   width: 0;
