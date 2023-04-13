@@ -6,7 +6,7 @@ module.exports = {
     extend: {
       animation: {
         heartbeat: 'heartbeat 1s ease-in-out infinite',
-        bigping: 'bigping 1.5s ease-in-out  ',
+        bigping: 'bigping 1s ease-in-out  ',
       },
       keyframes: {
         heartbeat: {

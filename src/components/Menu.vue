@@ -33,7 +33,7 @@ const icons = ref([
 </script>
 <template>
   <div
-    class="flex flex-col justify-center lg:block fixed top-24 bottom-0 right-0 left-0 lg:min-h-screen min-w-screen z-50 bg-primary py-2 lg:px-24"
+    class="flex flex-col justify-center fixed bottom-0 right-0 left-0 min-h-screen min-w-screen z-20 bg-primary py-2 lg:px-24"
   >
     <div class="lg:grid lg:grid-cols-2 lg:justify-center lg:max-w-7xl lg:mx-auto">
       <div>
@@ -49,7 +49,7 @@ const icons = ref([
       <div class="lg:flex-1 lg:flex lg:flex-col lg:justify-center">
         <div
           v-for="v in list"
-          class="text-secondary cursor-pointer text-5xl text-center mb-10 flex justify-center"
+          class="text-secondary cursor-pointer text-5xl text-center my-5 flex justify-center"
           @click="$emit('goto', v.to)"
         >
           <p class="menu-text">

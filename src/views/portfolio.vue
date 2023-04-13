@@ -103,10 +103,7 @@ const getImage = (url: string) => {
     </div>
     <p v-html="description" class="text-center mt-24 text-xl"></p>
     <div class="flex justify-between items-center mt-20 lg:mx-40">
-      <button
-        class="mx-2 bg-third text-secondary text-base hover:text-third lg:text-lg"
-        @click="$emit('goto', 'portfolio')"
-      >
+      <button class="mx-2 bg-third text-secondary text-base hover:text-third lg:text-lg" @click="$router.push('/')">
         {{ goBack }}
       </button>
       <button class="mx-2 bg-secondary text-third text-base hover:text-secondary lg:text-lg">

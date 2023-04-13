@@ -62,18 +62,9 @@ const closeMenu = () => {
 }
 
 const scrollTo = (block: string) => {
-  router.push('/').then(() => {
-    unbind()
-    menu.value = false
-    const el = document.getElementById(block)
-    if (el) {
-      window.scrollTo({
-        behavior: 'smooth',
-        top: el.getBoundingClientRect().top - document.body.getBoundingClientRect().top - 96,
-      })
-      // el.scrollIntoView({ behavior: 'smooth', top:'96px' })
-    }
-  })
+  unbind()
+  menu.value = false
+  router.push({ name: 'Index', hash: `#${block}` })
 }
 
 const inserted = () => {

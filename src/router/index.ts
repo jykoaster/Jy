@@ -21,6 +21,13 @@ const routes: RouteRecordRaw[] = [
 const options: RouterOptions = {
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return { el: to.hash, top: 96, behavior: 'smooth' }
+    } else {
+      return { top: 0, behavior: 'smooth' }
+    }
+  },
 }
 
 const router: Router = createRouter(options)
