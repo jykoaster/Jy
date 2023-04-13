@@ -17,4 +17,5 @@ import { faNpm, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 library.add(faNpm, faGithub, faXmark, faUpRightAndDownLeftFromCenter)
 
-createApp(App).use(router).use(LoadingPlugin).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
+const app = createApp(App).use(router).use(LoadingPlugin).component('font-awesome-icon', FontAwesomeIcon)
+router.isReady().then(() => app.mount('#app'))

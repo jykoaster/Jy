@@ -3,18 +3,19 @@ import Header from '@/components/Header.vue'
 import Menu from '@/components/Menu.vue'
 import Notebook from '@/components/Notebook.vue'
 import { onBeforeMount, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useLoading } from 'vue-loading-overlay'
 
 const $loading = useLoading({
   // options
   backgroundColor: '#111111',
 })
-
+const route = useRoute()
 const router = useRouter()
 const menu = ref(false)
 const isInit = ref(false)
-const enterIn = ref(false)
+
+const enterIn = ref(route.fullPath !== '/')
 const imagesToPreload = [
   '/NB.webp',
   '/NB_m.webp',

@@ -110,7 +110,7 @@ const getImage = (url: string) => {
         {{ goBack }}
       </button>
       <button class="mx-2 bg-secondary text-third text-base hover:text-secondary lg:text-lg">
-        <a :href="url">
+        <a :href="url" target="_blank">
           {{ goExplore }}
         </a>
       </button>
