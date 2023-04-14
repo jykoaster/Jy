@@ -8,6 +8,7 @@ import { useLoading } from "vue-loading-overlay";
 const $loading = useLoading({
   // options
   backgroundColor: "#111111",
+  color: "#e2e8f0",
 });
 const route = useRoute();
 const router = useRouter();
