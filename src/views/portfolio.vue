@@ -40,7 +40,7 @@ const projects = [
       "/portfolio/ordering/14.PNG",
     ],
     descriptions:
-      "Ordering system by Nuxt.js/Vuetify.js. <br />Cart module , Coupon module , Member module , Point module , Order module , Menu module , Branch module",
+      "Ordering system by Nuxt.js/Vuetify.js. <br />Cart module , Coupon module , Member module , Point module , Order module , Menu module , Branch module.",
     url: "https://demo.ordering.staging.52888.tw/",
   },
   {
@@ -60,8 +60,33 @@ const projects = [
       "/portfolio/inmood/11.PNG",
     ],
     descriptions:
-      "CMS by Nuxt.js/tailwind.css. <br/>Shop module , Member module , Page module , Order module , News module",
+      "CMS by Nuxt.js/tailwind.css. <br/>Shop module , Member module , Page module , Order module , News module.",
     url: "https://yi-mu-tian.52888.tw/zh-Hant",
+  },
+  {
+    id: "4",
+    name: "OCO EMS/SCADA",
+    images: [
+      "/portfolio/scada/0.PNG",
+      "/portfolio/scada/10.PNG",
+      "/portfolio/scada/10-1.PNG",
+      "/portfolio/scada/1.PNG",
+      "/portfolio/scada/1-1.PNG",
+      "/portfolio/scada/1-2.PNG",
+      "/portfolio/scada/2.PNG",
+      "/portfolio/scada/2-1.PNG",
+      "/portfolio/scada/3.PNG",
+      "/portfolio/scada/4.PNG",
+      "/portfolio/scada/5.PNG",
+      "/portfolio/scada/6.PNG",
+      "/portfolio/scada/7.PNG",
+      "/portfolio/scada/11.PNG",
+      "/portfolio/scada/12.PNG",
+      "/portfolio/scada/13.PNG",
+    ],
+    descriptions:
+      "This is an integrated system of SCADA and EMS, compliant with the intelligent building standards by Vue.js/Ant Design Vue. <br/> SCADA Module, EMS Module, Notify Module, Statistics Module , Alarm Module. <br/> <br/> Account: demo <br/> Password: demo",
+    url: "https://ocoservice.oco.com.tw:9080/auth/fdff1878-a54a-44ee-b82c-a62bdc5cdb55",
   },
 ];
 

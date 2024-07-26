@@ -1,37 +1,42 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import Chevron from '@/components/images/Chevron.vue'
+import { ref } from "vue";
+import Chevron from "@/components/images/Chevron.vue";
 const emit = defineEmits<{
-  (e: 'toDetail', id: string): void
-}>()
-const heading = ref('PORTFOLIO')
+  (e: "toDetail", id: string): void;
+}>();
+const heading = ref("PORTFOLIO");
 const portfolios = ref([
   {
-    src: '/portfolio/ordering/14.PNG',
-    name: 'Ordering system',
-    id: '2',
+    src: "/portfolio/scada/scada.webp",
+    name: "OCO EMS/SCADA",
+    id: "4",
   },
   {
-    src: '/portfolio/inmood/1.PNG',
-    name: 'Inmood',
-    id: '3',
+    src: "/portfolio/ordering/14.PNG",
+    name: "Ordering system",
+    id: "2",
   },
   {
-    src: '/portfolio/shangxiang/1.PNG',
-    name: 'ShangXiang',
-    id: '1',
+    src: "/portfolio/inmood/1.PNG",
+    name: "Inmood",
+    id: "3",
   },
-])
+  {
+    src: "/portfolio/shangxiang/1.PNG",
+    name: "ShangXiang",
+    id: "1",
+  },
+]);
 
-const generate = ref('THE GENERATE')
-const effect = ref('')
+const generate = ref("THE GENERATE");
+const effect = ref("");
 
 const toDetail = (id: string) => {
-  effect.value = id
+  effect.value = id;
   // setTimeout(() => {
-  emit('toDetail', id)
+  emit("toDetail", id);
   // }, 200)
-}
+};
 </script>
 <template>
   <div class="flex flex-col justify-center text-secondary my-20 px-5 lg:px-0">
