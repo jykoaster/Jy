@@ -86,7 +86,6 @@ const projects = [
     ],
     descriptions:
       "This is an integrated system of SCADA and EMS, compliant with the intelligent building standards by Vue.js/Ant Design Vue. <br/> SCADA Module, EMS Module, Notify Module, Statistics Module , Alarm Module. <br/> <br/> Account: demo <br/> Password: demo",
-    url: "https://ocoservice.oco.com.tw:9080/auth/fdff1878-a54a-44ee-b82c-a62bdc5cdb55",
   },
 ];
 
@@ -122,7 +121,7 @@ const getImage = (url: string) => {
       ></div>
     </div>
     <p v-html="description" class="text-center mt-24 text-xl"></p>
-    <div class="flex justify-between items-center mt-20 lg:mx-40">
+    <div class="flex items-center mt-20 lg:mx-40" :class="url ? 'justify-between' : 'justify-center'">
       <button
         class="mx-2 bg-third text-secondary text-base hover:text-third lg:text-lg"
         @click="$router.push({ name: 'Index', hash: '#portfolio' })"
@@ -130,6 +129,7 @@ const getImage = (url: string) => {
         {{ goBack }}
       </button>
       <button
+        v-if="url"
         class="mx-2 bg-secondary text-third text-base hover:text-secondary lg:text-lg"
       >
         <a :href="url" target="_blank">
