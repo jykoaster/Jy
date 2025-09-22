@@ -85,7 +85,7 @@ const projects = [
       "/portfolio/scada/13.PNG",
     ],
     descriptions:
-      "This is an integrated system of SCADA and EMS, compliant with the intelligent building standards by Vue.js/Ant Design Vue. <br/> SCADA Module, EMS Module, Notify Module, Statistics Module , Alarm Module. <br/> <br/> Account: demo <br/> Password: demo",
+      "This is an integrated system of SCADA and EMS, compliant with the intelligent building standards by Vue.js/Ant Design Vue. <br/> SCADA Module, EMS Module, Notify Module, Statistics Module , Alarm Module.",
   },
 ];
 
