@@ -26,6 +26,11 @@ const portfolios = ref([
     name: "ShangXiang",
     id: "1",
   },
+  {
+    src: "/portfolio/oolo/1.png",
+    name: "oolo",
+    id: "5",
+  },
 ]);
 
 const generate = ref("THE GENERATE");

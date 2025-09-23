@@ -87,6 +87,23 @@ const projects = [
     descriptions:
       "This is an integrated system of SCADA and EMS, compliant with the intelligent building standards by Vue.js/Ant Design Vue. <br/> SCADA Module, EMS Module, Notify Module, Statistics Module , Alarm Module.",
   },
+  {
+    id: "5",
+    name: "oolo",
+    images: [
+      "/portfolio/oolo/1.png",
+      "/portfolio/oolo/2.png",
+      "/portfolio/oolo/3.png",  
+      "/portfolio/oolo/4.png",
+      "/portfolio/oolo/5.png",
+      "/portfolio/oolo/6.png",
+      "/portfolio/oolo/7.png",
+      "/portfolio/oolo/8.png",
+    ],
+    descriptions:
+      "This is a project of an official event website, using Master.css for layout implementation.",
+    url: "https://www.oolomobility.com/",
+  },
 ];
 
 const route = useRoute();
