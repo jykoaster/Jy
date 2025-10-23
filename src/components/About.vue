@@ -5,7 +5,7 @@ const text1 = ref("Be a picky user");
 const text2 = ref("Before be a good developer");
 const experience = ref([
   {
-    time: "2024 ~ now",
+    time: "2024 ~ 2025",
     company: "今網智慧科技股份有限公司",
   },
   {
