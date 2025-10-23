@@ -6,23 +6,23 @@ const text2 = ref("Before be a good developer");
 const experience = ref([
   {
     time: "2024 ~ 2025",
-    company: "今網智慧科技股份有限公司",
+    company: "SmaDay Technology Co., Ltd",
   },
   {
     time: "2023 ~ 2024",
-    company: "橙設科技有限公司",
+    company: "Orange Create & Operation",
   },
   {
     time: "2021 ~ 2023",
-    company: "達鈦科技實業有限公司",
+    company: "Dotech Inc",
   },
   {
     time: "2019 ~ 2021",
-    company: "夸克有限公司",
+    company: "PHP Engineer",
   },
   {
     time: "2017 ~ 2019",
-    company: "亞碼數位科技有限公司",
+    company: "IT Manager",
   },
 ]);
 </script>
