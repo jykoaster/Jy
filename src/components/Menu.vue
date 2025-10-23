@@ -20,27 +20,7 @@ const list = ref([
     to: "portfolio",
   },
 ]);
-const icons = ref([
-  {
-    icon: "fa-brands fa-npm",
-    name: "npm",
-    src: "https://www.npmjs.com/~koaster",
-  },
-  {
-    icon: "fa-brands fa-github",
-    name: "github",
-    src: "https://github.com/jykoaster",
-  },
-  {
-    icon: "fa-brands fa-linkedin",
-    name: "linkedin",
-    src: "https://www.linkedin.com/in/jeremy-xiao-b10b19321/",
-  },
-]);
 
-const goLink = (src: string) => {
-  window.open(src, "_blank");
-};
 </script>
 <template>
   <div
@@ -76,15 +56,6 @@ const goLink = (src: string) => {
           <p class="menu-text">
             {{ v.name }}
           </p>
-        </div>
-      </div>
-      <div class="flex justify-center items-center mt-20 lg:hidden">
-        <div
-          v-for="v in icons"
-          class="mx-5 rounded-full bg-third h-14 w-14 flex justify-center items-center"
-          @click="goLink(v.src)"
-        >
-          <font-awesome-icon :icon="v.icon" class="h-8 w-8 text-secondary" />
         </div>
       </div>
     </div>

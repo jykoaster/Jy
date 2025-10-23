@@ -43,7 +43,7 @@ const goLink = (src: string) => {
             <p class="text-3xl lg:text-4xl mb-5">{{ name }}</p>
             <p class="mb-5 whitespace-nowrap">{{ job }}</p>
             <p class="whitespace-nowrap">{{ Email }}</p>
-            <div class="flex gap-3 mt-5 justify-center">
+            <div class="lg:hidden flex gap-3 mt-5 justify-center">
               <div
                 v-for="v in icons"
                 class="rounded-full bg-third h-12 w-12 flex justify-center items-center cursor-pointer hover:animate-heartbeat"
