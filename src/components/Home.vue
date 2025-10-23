@@ -14,6 +14,11 @@ const icons = ref([
     name: "github",
     src: "https://github.com/jykoaster",
   },
+  {
+    icon: "fa-brands fa-linkedin",
+    name: "linkedin",
+    src: "https://www.linkedin.com/in/jeremy-xiao-b10b19321/",
+  },
 ]);
 const goLink = (src: string) => {
   window.open(src, "_blank");
@@ -38,6 +43,18 @@ const goLink = (src: string) => {
             <p class="text-3xl lg:text-4xl mb-5">{{ name }}</p>
             <p class="mb-5 whitespace-nowrap">{{ job }}</p>
             <p class="whitespace-nowrap">{{ Email }}</p>
+            <div class="flex gap-3 mt-5 justify-center">
+              <div
+                v-for="v in icons"
+                class="rounded-full bg-third h-12 w-12 flex justify-center items-center cursor-pointer hover:animate-heartbeat"
+                @click="goLink(v.src)"
+              >
+                <font-awesome-icon
+                  :icon="v.icon"
+                  class="h-8 w-8 text-secondary"
+                />
+              </div>
+            </div>
           </div>
         </Transition>
       </div>
@@ -59,16 +76,6 @@ const goLink = (src: string) => {
   </div>
 </template>
 <style scoped lang="scss">
-// .topIn-enter-active,
-// .topIn-leave-active {
-//   transition: all 0.5s ease-in-out 0.5s;
-// }
-
-// .topIn-enter-from,
-// .topIn-leave-to {
-//   opacity: 0;
-//   transform: translateY(-100%);
-// }
 .bottomIn-enter-active,
 .bottomIn-leave-active {
   transition: all 0.5s ease-in-out 0.5s;

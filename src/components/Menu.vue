@@ -31,6 +31,11 @@ const icons = ref([
     name: "github",
     src: "https://github.com/jykoaster",
   },
+  {
+    icon: "fa-brands fa-linkedin",
+    name: "linkedin",
+    src: "https://www.linkedin.com/in/jeremy-xiao-b10b19321/",
+  },
 ]);
 
 const goLink = (src: string) => {

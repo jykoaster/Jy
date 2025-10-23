@@ -13,9 +13,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
 import { faXmark, faUpRightAndDownLeftFromCenter } from '@fortawesome/free-solid-svg-icons'
-import { faNpm, faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faNpm, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
-library.add(faNpm, faGithub, faXmark, faUpRightAndDownLeftFromCenter)
+library.add(faNpm, faGithub,faLinkedin, faXmark, faUpRightAndDownLeftFromCenter)
 
 const app = createApp(App).use(router).use(LoadingPlugin).component('font-awesome-icon', FontAwesomeIcon)
 router.isReady().then(() => app.mount('#app'))
