@@ -104,6 +104,17 @@ const projects = [
       "This is a project of an official event website, using Master.css for layout implementation.",
     url: "https://www.oolomobility.com/",
   },
+   {
+    id: "6",
+    name: "Resume Assistant",
+    images: [
+      "/portfolio/resume/1.png",
+      "/portfolio/resume/2.png",
+    ],
+    descriptions:
+      "This project is my resume assistant; it can answer some interview-related questions.It is built with Next.js, Python, BERT Model.",
+    url: "https://resume-assistant.jy.style/",
+  },
 ];
 
 const route = useRoute();
