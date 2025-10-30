@@ -43,3 +43,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Copy index.html to 404.html for History Mode
+        run: cp ./dist/index.html ./dist/404.html
