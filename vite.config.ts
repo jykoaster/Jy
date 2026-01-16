@@ -1,28 +1,37 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import pluginRewriteAll from 'vite-plugin-rewrite-all'
-import { resolve } from 'path'
+import { fileURLToPath, URL } from 'node:url'
 
-// https://vitejs.dev/config/
 export default defineConfig({
+  appType: 'spa',
+  
   base: '/',
-  plugins: [vue(), pluginRewriteAll()],
+  
+  plugins: [
+    vue()
+  ],
+  
   server: {
     host: '0.0.0.0',
+    port: 5173,
   },
+  
   resolve: {
-    alias: [
-      {
-        find: '@',
-        replacement: resolve(__dirname, './src'),
-      },
-    ],
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    },
   },
+  
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "@/assets/main.scss";`,
+        additionalData: `@use "@/assets/main.scss" as *;`,
+        api: 'modern-compiler'
       },
     },
   },
+
+  optimizeDeps: {
+    include: ['gsap', 'gsap/ScrollToPlugin']
+  }
 })

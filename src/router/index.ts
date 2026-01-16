@@ -6,7 +6,9 @@ import {
   RouteRecordRaw,
 } from "vue-router";
 import gsap from "gsap";
+import ScrollToPlugin from "gsap/ScrollToPlugin";
 
+gsap.registerPlugin(ScrollToPlugin)
 const routes: RouteRecordRaw[] = [
   { path: "/", name: "Index", component: () => import("@/views/index.vue") },
   {

@@ -53,9 +53,9 @@ const experience = ref([
         </p>
          <p class="lg:hidden text-center">
           {{ v.endAt }}
-          <p>
+          <span>
             |
-          </p>
+          </span>
            {{ v.startAt }}
         </p>
       </div>
