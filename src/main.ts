@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import '@/style.css'
 import App from '@/App.vue'
+import { createPinia } from 'pinia'
 import router from '@/router/index'
 import { LoadingPlugin } from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
@@ -17,5 +18,6 @@ import { faNpm, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 library.add(faNpm, faGithub,faLinkedin, faXmark, faUpRightAndDownLeftFromCenter)
 
-const app = createApp(App).use(router).use(LoadingPlugin).component('font-awesome-icon', FontAwesomeIcon)
+const pinia = createPinia()
+const app = createApp(App).use(pinia).use(router).use(LoadingPlugin).component('font-awesome-icon', FontAwesomeIcon)
 router.isReady().then(() => app.mount('#app'))

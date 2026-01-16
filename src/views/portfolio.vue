@@ -147,7 +147,7 @@ const onHide = () => {
 };
 
 const backToHome = () => {
-  router.push({ name: "Index", hash: "#portfolio" });
+  router.push({ name: "Index" });
 };
 </script>
 <template>

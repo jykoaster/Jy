@@ -7,6 +7,8 @@ import { useRouter, onBeforeRouteLeave } from "vue-router";
 import { watch } from "vue";
 import gsap from "gsap";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
+import { useScrollStore } from "@/stores/useScrollStore";
+import { useRoute } from "vue-router";
 
 const props = defineProps<{
   enterIn: Boolean;
@@ -19,28 +21,36 @@ const toPortfolioDetail = (id: string) => {
   router.push({ name: "Portfolio", params: { id } });
 };
 
+gsap.registerPlugin(ScrollToPlugin);
+const route = useRoute();
+const scrollStore = useScrollStore();
+
 onBeforeRouteLeave((to, from) => {
   if (from.name === "Index") {
     const currentPos = window.pageYOffset || document.documentElement.scrollTop;
-    sessionStorage.setItem("index_scroll_pos", currentPos.toString());
+    scrollStore.setIndexScrollY(currentPos);
   }
 });
 
-gsap.registerPlugin(ScrollToPlugin);
+const performScroll = (target: string | number, duration = 0.8) => {
+  gsap.to(window, {
+    duration,
+    scrollTo:
+      typeof target === "string" ? { y: target, offsetY: 96 } : { y: target },
+    ease: "power2.inOut",
+    overwrite: "auto",
+  });
+};
 watch(
-  () => props.enterIn,
-  (newVal) => {
-    if (newVal) {
-      const savedPos = sessionStorage.getItem("index_scroll_pos");
-      if (savedPos) {
-        setTimeout(() => {
-          gsap.to(window, {
-            duration: 0.8,
-            scrollTo: { y: parseInt(savedPos) },
-            ease: "power2.inOut",
-          });
-        }, 400);
-      }
+  [() => props.enterIn, () => route.hash],
+  async ([isEntered, currentHash], [oldEntered]) => {
+    if (!isEntered) return;
+    if (currentHash) {
+      performScroll(currentHash);
+    } else if (isEntered !== oldEntered && scrollStore.indexScrollY > 0) {
+      setTimeout(() => {
+        performScroll(scrollStore.indexScrollY, 0.8);
+      }, 350);
     }
   },
   { immediate: true }

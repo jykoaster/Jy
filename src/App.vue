@@ -6,7 +6,6 @@ import { useRoute, useRouter } from "vue-router";
 import { useLoading } from "vue-loading-overlay";
 
 const $loading = useLoading({
-  // options
   backgroundColor: "#111111",
   color: "#e2e8f0",
 });
@@ -111,9 +110,6 @@ const scrollTo = (block: string) => {
 .fade-enter-active,
 .fade-leave-active {
   transition: all 0.8s ease-in-out;
-}
-.fade-enter-active {
-  transition-delay: 0.5s;
 }
 
 .fade-enter-from,
