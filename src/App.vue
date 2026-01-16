@@ -31,9 +31,7 @@ const imagesToPreload = [
   "/portfolio/shangxiang/1.PNG",
 ];
 onBeforeMount(() => {
-  const loader = $loading.show({
-    // Optional parameters
-  });
+  const loader = $loading.show();
 
   const images = imagesToPreload.map((imageSrc) => {
     return new Promise((resolve, reject) => {
@@ -55,33 +53,17 @@ onBeforeMount(() => {
 });
 
 const openMenu = () => {
-  // inserted()
   menu.value = true;
 };
 
 const closeMenu = () => {
-  // unbind()
   menu.value = false;
 };
 
 const scrollTo = (block: string) => {
-  // unbind()
   menu.value = false;
   router.push({ name: "Index", hash: `#${block}` });
 };
-
-// const inserted = () => {
-//   const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
-//   document.body.style.cssText += 'position:fixed;width:100%;top:-' + scrollTop + 'px;'
-// }
-
-// const unbind = () => {
-//   const body = document.body
-//   body.style.position = ''
-//   const top = body.style.top
-//   document.body.scrollTop = document.documentElement.scrollTop = -parseInt(top)
-//   body.style.top = ''
-// }
 </script>
 
 <template>

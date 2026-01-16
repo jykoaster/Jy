@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
+import VueEasyLightbox from "vue-easy-lightbox";
 
 defineEmits<{
   (e: "goto", block: string): void;
@@ -93,7 +94,7 @@ const projects = [
     images: [
       "/portfolio/oolo/1.png",
       "/portfolio/oolo/2.png",
-      "/portfolio/oolo/3.png",  
+      "/portfolio/oolo/3.png",
       "/portfolio/oolo/4.png",
       "/portfolio/oolo/5.png",
       "/portfolio/oolo/6.png",
@@ -104,13 +105,10 @@ const projects = [
       "This is a project of an official event website, using Master.css for layout implementation.",
     url: "https://www.oolomobility.com/",
   },
-   {
+  {
     id: "6",
     name: "Resume Assistant",
-    images: [
-      "/portfolio/resume/1.png",
-      "/portfolio/resume/2.png",
-    ],
+    images: ["/portfolio/resume/1.png", "/portfolio/resume/2.png"],
     descriptions:
       "This project is my resume assistant; it can answer some interview-related questions.It is built with Next.js, Python, BERT Model.",
     url: "https://resume-assistant.jy.style/",
@@ -118,6 +116,7 @@ const projects = [
 ];
 
 const route = useRoute();
+const router = useRouter();
 const tar = projects.find((el) => el.id === route.params.id);
 const heading = ref(tar?.name);
 const description = ref(tar?.descriptions);
@@ -134,6 +133,22 @@ const getImage = (url: string) => {
     return baseurl + url;
   }
 };
+
+const visibleRef = ref(false);
+const indexRef = ref(0); //
+
+const showImg = (index: number) => {
+  indexRef.value = index;
+  visibleRef.value = true;
+};
+
+const onHide = () => {
+  visibleRef.value = false;
+};
+
+const backToHome = () => {
+  router.push({ name: "Index", hash: "#portfolio" });
+};
 </script>
 <template>
   <div class="flex flex-col justify-center text-secondary my-20 mx-5 lg:mx-0">
@@ -144,15 +159,19 @@ const getImage = (url: string) => {
         class="relative rounded-xl w-full h-0 p-0 cursor-pointer bg-white bg-no-repeat bg-contain bg-center transition-all hover:scale-[2] hover:z-10"
         style="padding-bottom: 60%"
         :style="{ backgroundImage: `url(${getImage(v)})` }"
+        @click="showImg(i)"
         @mouseover="hover = i"
         @mouseleave="hover = null"
       ></div>
     </div>
     <p v-html="description" class="text-center mt-24 text-xl"></p>
-    <div class="flex items-center mt-20 lg:mx-40" :class="url ? 'justify-between' : 'justify-center'">
+    <div
+      class="flex items-center mt-20 lg:mx-40"
+      :class="url ? 'justify-between' : 'justify-center'"
+    >
       <button
         class="mx-2 bg-third text-secondary text-base hover:text-third lg:text-lg"
-        @click="$router.push({ name: 'Index', hash: '#portfolio' })"
+        @click="backToHome"
       >
         {{ goBack }}
       </button>
@@ -165,6 +184,12 @@ const getImage = (url: string) => {
         </a>
       </button>
     </div>
+    <vue-easy-lightbox
+      :visible="visibleRef"
+      :imgs="images"
+      :index="indexRef"
+      @hide="onHide"
+    ></vue-easy-lightbox>
   </div>
 </template>
 <style scoped lang="scss">

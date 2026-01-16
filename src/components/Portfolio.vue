@@ -43,9 +43,9 @@ const effect = ref("");
 
 const toDetail = (id: string) => {
   effect.value = id;
-  // setTimeout(() => {
-  emit("toDetail", id);
-  // }, 200)
+  setTimeout(() => {
+    emit("toDetail", id);
+  }, 200)
 };
 </script>
 <template>

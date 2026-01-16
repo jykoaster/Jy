@@ -26,8 +26,8 @@ const options: RouterOptions = {
       window.location.hash = ''
       return { top: 0 }
     }
-    if (to.hash) {
-      return { el: to.hash, top: 96, behavior: 'smooth' }
+    if (to.name === 'Index') {
+      return false;
     } else {
       return { top: 0, behavior: 'smooth' }
     }
